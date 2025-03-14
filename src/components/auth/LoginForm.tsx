@@ -33,48 +33,50 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
-      <form
-        onSubmit={handleSubmit(handleLoginSubmit)}
-        className="flex flex-col justify-between h-full"
-      >
-        <h1 className="text-3xl font-bold text-center ">Tracker dashboard</h1>
-        <div className="flex items-center gap-2 w-full ">
-          <label className="min-w-[80px]">Email</label>
-          <input
-            {...register('email', {
-              required: { value: true, message: '이메일은 필수입니다 ' },
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: '이메일 형식으로 입력해주세요',
-              },
-            })}
-            className="w-full"
-            placeholder="이메일을 입력해주세요"
-          />
+    <div className="flex-1">
+      <form onSubmit={handleSubmit(handleLoginSubmit)} className="h-full">
+        <div className="flex flex-col justify-between h-full">
+          <h2 className="text-2xl font-bold text-center"> Login</h2>
+          <div className="flex items-center gap-2 w-full ">
+            <label className="w-[80px] text-sm">Email</label>
+            <input
+              {...register('email', {
+                required: { value: true, message: '이메일은 필수입니다 ' },
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: '이메일 형식으로 입력해주세요',
+                },
+              })}
+              className="w-full"
+              placeholder="이메일을 입력해주세요"
+            />
+          </div>
+          <p className="text-red-500 text-sm">{errors.email?.message}</p>
+          <div className="flex items-center gap-2 w-full">
+            <label className="w-[80px] text-sm">Password</label>
+            <input
+              type="password"
+              {...register('password', {
+                required: { value: true, message: '비밀번호는 필수입니다' },
+                minLength: {
+                  value: 8,
+                  message: '비밀번호는 최소 8자리입니다 ',
+                },
+              })}
+              className="w-full"
+              placeholder="비밀번호를 입력해주세요"
+            />
+          </div>
+          <p className="text-red-500 text-sm">{errors.password?.message}</p>
+          <button type="submit" className="w-full bg-blue-500 ">
+            Login
+          </button>
+          <button onClick={moveToEnroll} className="w-full ">
+            Enroll
+          </button>
         </div>
-        <p className="text-red-500 text-sm">{errors.email?.message}</p>
-        <div className="flex items-center gap-2 w-full">
-          <label className="min-w-[80px]">Password</label>
-          <input
-            type="password"
-            {...register('password', {
-              required: { value: true, message: '비밀번호는 필수입니다' },
-              minLength: { value: 8, message: '비밀번호는 최소 8자리입니다 ' },
-            })}
-            className="w-full"
-            placeholder="비밀번호를 입력해주세요"
-          />
-        </div>
-        <p className="text-red-500 text-sm">{errors.password?.message}</p>
-        <button type="submit" className="w-full bg-blue-500 ">
-          Login
-        </button>
-        <button onClick={moveToEnroll} className="w-full ">
-          Enroll
-        </button>
       </form>
-    </>
+    </div>
   );
 };
