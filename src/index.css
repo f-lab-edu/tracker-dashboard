@@ -4,17 +4,17 @@
 
 :root {
   @apply bg-gray-100 text-gray-900 font-sans;
-  color-scheme: light, dark;
+  color-scheme: light;
 }
 * {
   pointer-events: auto !important;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     @apply bg-gray-900 text-white;
   }
-}
+} */
 
 a {
   @apply text-blue-500 hover:text-blue-700 transition;
