@@ -1,8 +1,9 @@
-import { API_BASE_URL } from '@/config/config';
+import { API_BASE_URL } from '@/config/api';
 import axios from 'axios';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Path, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-
+import { AuthButton } from './ui/authButton';
+import { AuthInputValid } from './ui/AuthInputValid';
 interface LoginFromType {
   email: string;
   password: string;
@@ -21,9 +22,7 @@ export const LoginForm = () => {
         `${API_BASE_URL}/dashboard/loginClient`,
         data
       );
-      if (response.status === 200) {
-        navigate('/');
-      }
+      navigate('/');
     } catch (err) {
       console.error('요청 실패', err);
     }
@@ -32,49 +31,65 @@ export const LoginForm = () => {
     navigate('/enroll');
   };
 
+  const loginValidationInputs = [
+    {
+      label: 'Email',
+      name: 'email',
+      placeholder: '이메일을 입력해주세요',
+      validation: {
+        required: { value: true, message: '이메일은 필수입니다' },
+        pattern: {
+          value:
+            /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+          message: '이메일 형식으로 입력해주세요',
+        },
+      },
+    },
+    {
+      label: 'Password',
+      name: 'password',
+      placeholder: '비밀번호를 입력해주세요',
+      inputType: 'password',
+      validation: {
+        required: { value: true, message: '비밀번호는 필수입니다' },
+        minLength: {
+          value: 8,
+          message: '비밀번호는 최소 8자리입니다',
+        },
+      },
+    },
+  ];
+
   return (
     <div className="flex-1">
       <form onSubmit={handleSubmit(handleLoginSubmit)} className="h-full">
         <div className="flex flex-col justify-between h-full">
           <h2 className="text-2xl font-bold text-center"> Login</h2>
-          <div className="flex items-center gap-2 w-full ">
-            <label className="w-[80px] text-sm">Email</label>
-            <input
-              {...register('email', {
-                required: { value: true, message: '이메일은 필수입니다 ' },
-                pattern: {
-                  value:
-                    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: '이메일 형식으로 입력해주세요',
-                },
-              })}
-              className="w-full"
-              placeholder="이메일을 입력해주세요"
-            />
-          </div>
-          <p className="text-red-500 text-sm">{errors.email?.message}</p>
-          <div className="flex items-center gap-2 w-full">
-            <label className="w-[80px] text-sm">Password</label>
-            <input
-              type="password"
-              {...register('password', {
-                required: { value: true, message: '비밀번호는 필수입니다' },
-                minLength: {
-                  value: 8,
-                  message: '비밀번호는 최소 8자리입니다 ',
-                },
-              })}
-              className="w-full"
-              placeholder="비밀번호를 입력해주세요"
-            />
-          </div>
-          <p className="text-red-500 text-sm">{errors.password?.message}</p>
-          <button type="submit" className="w-full bg-blue-500 ">
-            Login
-          </button>
-          <button onClick={moveToEnroll} className="w-full ">
-            Enroll
-          </button>
+          {loginValidationInputs.map(
+            ({ label, name, placeholder, validation, inputType }) => (
+              <AuthInputValid
+                key={name}
+                label={label}
+                name={name as Path<LoginFromType>}
+                placeholder={placeholder}
+                validation={validation}
+                register={register}
+                errors={errors}
+                inputType={inputType}
+              />
+            )
+          )}
+          <AuthButton
+            label="Login"
+            buttonType="submit"
+            buttonClassName="w-full bg-blue-500 "
+          />
+          <AuthButton
+            label="Enroll"
+            buttonType="button"
+            onclick={moveToEnroll}
+            buttonClassName="w-full"
+          />
         </div>
       </form>
     </div>
