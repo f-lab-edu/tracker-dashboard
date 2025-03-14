@@ -1,5 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { EnrollForm } from './components/auth/EnrollForm';
 import { LoginPage } from './pages/LoginPage';
 
 function App() {
@@ -7,7 +6,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/enroll" element={<EnrollForm />}></Route>
+        <Route path="/enroll" element={<LoginPage />}></Route>
       </Routes>
     </Router>
   );
