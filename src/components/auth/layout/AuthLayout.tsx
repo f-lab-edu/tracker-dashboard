@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import loginImg from '../../assets/auth/loginImg.jpg';
-import { EnrollForm } from './EnrollForm';
-import { LoginForm } from './LoginForm';
+import loginImg from '../../../assets/auth/loginImg.jpg';
+import { EnrollForm } from '../forms/EnrollForm';
+import { LoginForm } from '../forms/LoginForm';
 export const AuthLayout = () => {
   const location = useLocation();
   const isLogin = location.pathname === '/login';

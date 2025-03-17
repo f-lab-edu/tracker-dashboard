@@ -1,9 +1,12 @@
 import { API_BASE_URL } from '@/config/api';
+import { authState } from '@/store/authState';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthButton } from './ui/authButton';
-import { AuthInputValid } from './ui/AuthInputValid';
+import { useSetRecoilState } from 'recoil';
+import { AuthButton } from '../components/AuthButton';
+import { AuthInputValid } from '../components/AuthInputValid';
+
 interface LoginFromType {
   email: string;
   password: string;
@@ -16,11 +19,13 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFromType>();
   const navigate = useNavigate();
+  const setUser = useSetRecoilState(authState);
   const handleLoginSubmit: SubmitHandler<LoginFromType> = async (data) => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/dashboard/loginClient`,
-        data
+        data,
+        { withCredentials: true }
       );
       navigate('/');
     } catch (err) {

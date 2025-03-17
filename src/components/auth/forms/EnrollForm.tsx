@@ -2,8 +2,8 @@ import { API_BASE_URL } from '@/config/api';
 import axios from 'axios';
 import { Path, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthButton } from './ui/authButton';
-import { AuthInputValid } from './ui/AuthInputValid';
+import { AuthButton } from '../components/AuthButton';
+import { AuthInputValid } from '../components/AuthInputValid';
 
 interface EnrollFormType {
   email: string;
@@ -22,18 +22,10 @@ export const EnrollForm = () => {
   const navigate = useNavigate();
   const handleEnrollSubmit = async (data: EnrollFormType) => {
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/dashboard/enrollClient`,
-        data
-      );
+      await axios.post(`${API_BASE_URL}/dashboard/enrollClient`, data);
       navigate('/login');
     } catch (err) {
       console.error('가입요청 실패', err);
-      if (err instanceof Error) {
-        alert(err.message);
-      } else {
-        alert('회원가입 오류');
-      }
     }
   };
   const enrollValidationInputs = [
