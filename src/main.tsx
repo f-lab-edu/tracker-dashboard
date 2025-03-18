@@ -1,7 +1,6 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { RecoilRoot } from 'recoil';
 import './index.css';
 import { routeTree } from './routeTree.gen.ts';
 
@@ -15,8 +14,6 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RecoilRoot>
-      <RouterProvider router={router} />
-    </RecoilRoot>
+    <RouterProvider router={router} />
   </StrictMode>
 );

@@ -1,16 +1,15 @@
 import { API_BASE_URL } from '@/config/api';
-import { authState } from '@/store/authState';
+import { useUserStore } from '@/store/authState';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
 import { toast, ToastContainer } from 'react-toastify';
-import { useRecoilState } from 'recoil';
 import { SidebarNavItem } from './ui/SidebarNavItem';
 
 export const Sidebar = () => {
-  const [user, setUser] = useRecoilState(authState);
+  const { user, setUser } = useUserStore();
   const navigate = useNavigate();
   const handleMoveToHome = () => {
     navigate({ to: '/' });

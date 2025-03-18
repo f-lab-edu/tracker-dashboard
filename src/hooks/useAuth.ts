@@ -1,7 +1,6 @@
-import { authState } from '@/store/authState';
-import { useRecoilValue } from 'recoil';
+import { useUserStore } from '@/store/authState';
 
 export function useAuth() {
-  const user = useRecoilValue(authState);
+  const { user } = useUserStore();
   return user ? true : false;
 }

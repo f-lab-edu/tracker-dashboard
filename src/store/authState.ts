@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { create } from 'zustand';
 
 export interface User {
   domain: string;
@@ -6,7 +6,12 @@ export interface User {
   email: string;
 }
 
-export const authState = atom<User | null>({
-  key: 'authState',
-  default: null,
-});
+export interface AuthStateType {
+  user: User | null;
+  setUser: (user: User | null) => void;
+}
+
+export const useUserStore = create<AuthStateType>((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
+}));

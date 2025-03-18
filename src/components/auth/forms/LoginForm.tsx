@@ -1,9 +1,8 @@
 import { API_BASE_URL } from '@/config/api';
-import { authState } from '@/store/authState';
+import { useUserStore } from '@/store/authState';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
-import { useSetRecoilState } from 'recoil';
 import { AuthButton } from '../components/AuthButton';
 import { AuthInputValid } from '../components/AuthInputValid';
 
@@ -19,7 +18,7 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginForm>();
   const navigate = useNavigate();
-  const setUser = useSetRecoilState(authState);
+  const setUser = useUserStore((state) => state.setUser);
   const handleLoginSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
       await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {

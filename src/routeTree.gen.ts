@@ -11,13 +11,13 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LoginImport } from './routes/login'
+import { Route as EnrollImport } from './routes/enroll'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
-import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index';
-import { Route as AuthenticatedMainStatImport } from './routes/_authenticated/mainStat';
-import { Route as AuthenticatedMyPageImport } from './routes/_authenticated/myPage';
-import { Route as AuthenticatedSubStatImport } from './routes/_authenticated/subStat';
-import { Route as EnrollImport } from './routes/enroll';
-import { Route as LoginImport } from './routes/login';
+import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedSubStatImport } from './routes/_authenticated/subStat'
+import { Route as AuthenticatedMyPageImport } from './routes/_authenticated/myPage'
+import { Route as AuthenticatedMainStatImport } from './routes/_authenticated/mainStat'
 
 // Create/Update Routes
 
@@ -42,89 +42,89 @@ const AuthenticatedIndexRoute = AuthenticatedIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 
 const AuthenticatedSubStatRoute = AuthenticatedSubStatImport.update({
   id: '/subStat',
   path: '/subStat',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 
 const AuthenticatedMyPageRoute = AuthenticatedMyPageImport.update({
   id: '/myPage',
   path: '/myPage',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 
 const AuthenticatedMainStatRoute = AuthenticatedMainStatImport.update({
   id: '/mainStat',
   path: '/mainStat',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_authenticated': {
-      id: '/_authenticated';
-      path: '';
-      fullPath: '';
-      preLoaderRoute: typeof AuthenticatedImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedImport
+      parentRoute: typeof rootRoute
+    }
     '/enroll': {
-      id: '/enroll';
-      path: '/enroll';
-      fullPath: '/enroll';
-      preLoaderRoute: typeof EnrollImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/enroll'
+      path: '/enroll'
+      fullPath: '/enroll'
+      preLoaderRoute: typeof EnrollImport
+      parentRoute: typeof rootRoute
+    }
     '/login': {
-      id: '/login';
-      path: '/login';
-      fullPath: '/login';
-      preLoaderRoute: typeof LoginImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/_authenticated/mainStat': {
-      id: '/_authenticated/mainStat';
-      path: '/mainStat';
-      fullPath: '/mainStat';
-      preLoaderRoute: typeof AuthenticatedMainStatImport;
-      parentRoute: typeof AuthenticatedImport;
-    };
+      id: '/_authenticated/mainStat'
+      path: '/mainStat'
+      fullPath: '/mainStat'
+      preLoaderRoute: typeof AuthenticatedMainStatImport
+      parentRoute: typeof AuthenticatedImport
+    }
     '/_authenticated/myPage': {
-      id: '/_authenticated/myPage';
-      path: '/myPage';
-      fullPath: '/myPage';
-      preLoaderRoute: typeof AuthenticatedMyPageImport;
-      parentRoute: typeof AuthenticatedImport;
-    };
+      id: '/_authenticated/myPage'
+      path: '/myPage'
+      fullPath: '/myPage'
+      preLoaderRoute: typeof AuthenticatedMyPageImport
+      parentRoute: typeof AuthenticatedImport
+    }
     '/_authenticated/subStat': {
-      id: '/_authenticated/subStat';
-      path: '/subStat';
-      fullPath: '/subStat';
-      preLoaderRoute: typeof AuthenticatedSubStatImport;
-      parentRoute: typeof AuthenticatedImport;
-    };
+      id: '/_authenticated/subStat'
+      path: '/subStat'
+      fullPath: '/subStat'
+      preLoaderRoute: typeof AuthenticatedSubStatImport
+      parentRoute: typeof AuthenticatedImport
+    }
     '/_authenticated/': {
-      id: '/_authenticated/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof AuthenticatedIndexImport;
-      parentRoute: typeof AuthenticatedImport;
-    };
+      id: '/_authenticated/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedIndexImport
+      parentRoute: typeof AuthenticatedImport
+    }
   }
 }
 
 // Create and export the route tree
 
 interface AuthenticatedRouteChildren {
-  AuthenticatedMainStatRoute: typeof AuthenticatedMainStatRoute;
-  AuthenticatedMyPageRoute: typeof AuthenticatedMyPageRoute;
-  AuthenticatedSubStatRoute: typeof AuthenticatedSubStatRoute;
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute;
+  AuthenticatedMainStatRoute: typeof AuthenticatedMainStatRoute
+  AuthenticatedMyPageRoute: typeof AuthenticatedMyPageRoute
+  AuthenticatedSubStatRoute: typeof AuthenticatedSubStatRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
@@ -132,44 +132,44 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedMyPageRoute: AuthenticatedMyPageRoute,
   AuthenticatedSubStatRoute: AuthenticatedSubStatRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
-};
+}
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
-  AuthenticatedRouteChildren
-);
+  AuthenticatedRouteChildren,
+)
 
 export interface FileRoutesByFullPath {
-  '': typeof AuthenticatedRouteWithChildren;
-  '/enroll': typeof EnrollRoute;
-  '/login': typeof LoginRoute;
-  '/mainStat': typeof AuthenticatedMainStatRoute;
-  '/myPage': typeof AuthenticatedMyPageRoute;
-  '/subStat': typeof AuthenticatedSubStatRoute;
-  '/': typeof AuthenticatedIndexRoute;
+  '': typeof AuthenticatedRouteWithChildren
+  '/enroll': typeof EnrollRoute
+  '/login': typeof LoginRoute
+  '/mainStat': typeof AuthenticatedMainStatRoute
+  '/myPage': typeof AuthenticatedMyPageRoute
+  '/subStat': typeof AuthenticatedSubStatRoute
+  '/': typeof AuthenticatedIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/enroll': typeof EnrollRoute;
-  '/login': typeof LoginRoute;
-  '/mainStat': typeof AuthenticatedMainStatRoute;
-  '/myPage': typeof AuthenticatedMyPageRoute;
-  '/subStat': typeof AuthenticatedSubStatRoute;
-  '/': typeof AuthenticatedIndexRoute;
+  '/enroll': typeof EnrollRoute
+  '/login': typeof LoginRoute
+  '/mainStat': typeof AuthenticatedMainStatRoute
+  '/myPage': typeof AuthenticatedMyPageRoute
+  '/subStat': typeof AuthenticatedSubStatRoute
+  '/': typeof AuthenticatedIndexRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  '/_authenticated': typeof AuthenticatedRouteWithChildren;
-  '/enroll': typeof EnrollRoute;
-  '/login': typeof LoginRoute;
-  '/_authenticated/mainStat': typeof AuthenticatedMainStatRoute;
-  '/_authenticated/myPage': typeof AuthenticatedMyPageRoute;
-  '/_authenticated/subStat': typeof AuthenticatedSubStatRoute;
-  '/_authenticated/': typeof AuthenticatedIndexRoute;
+  __root__: typeof rootRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/enroll': typeof EnrollRoute
+  '/login': typeof LoginRoute
+  '/_authenticated/mainStat': typeof AuthenticatedMainStatRoute
+  '/_authenticated/myPage': typeof AuthenticatedMyPageRoute
+  '/_authenticated/subStat': typeof AuthenticatedSubStatRoute
+  '/_authenticated/': typeof AuthenticatedIndexRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
+  fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
     | '/enroll'
@@ -177,9 +177,9 @@ export interface FileRouteTypes {
     | '/mainStat'
     | '/myPage'
     | '/subStat'
-    | '/';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/enroll' | '/login' | '/mainStat' | '/myPage' | '/subStat' | '/';
+    | '/'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/enroll' | '/login' | '/mainStat' | '/myPage' | '/subStat' | '/'
   id:
     | '__root__'
     | '/_authenticated'
@@ -188,21 +188,21 @@ export interface FileRouteTypes {
     | '/_authenticated/mainStat'
     | '/_authenticated/myPage'
     | '/_authenticated/subStat'
-    | '/_authenticated/';
-  fileRoutesById: FileRoutesById;
+    | '/_authenticated/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren;
-  EnrollRoute: typeof EnrollRoute;
-  LoginRoute: typeof LoginRoute;
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  EnrollRoute: typeof EnrollRoute
+  LoginRoute: typeof LoginRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   EnrollRoute: EnrollRoute,
   LoginRoute: LoginRoute,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
