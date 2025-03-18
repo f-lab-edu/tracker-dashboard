@@ -1,10 +1,10 @@
 import { API_BASE_URL } from '@/config/api';
 import { authState } from '@/store/authState';
+import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import { SidebarNavItem } from './ui/SidebarNavItem';
@@ -13,7 +13,7 @@ export const Sidebar = () => {
   const [user, setUser] = useRecoilState(authState);
   const navigate = useNavigate();
   const handleMoveToHome = () => {
-    navigate('/');
+    navigate({ to: '/' });
   };
   const handleLogout = () => {
     try {
@@ -21,7 +21,7 @@ export const Sidebar = () => {
         withCredentials: true,
       });
       setUser(null);
-      navigate('/login');
+      navigate({ to: '/login' });
     } catch (err) {
       console.error('로그아웃 오류', err);
       toast.error('로그아웃 오류입니다');
@@ -44,20 +44,16 @@ export const Sidebar = () => {
       </section>
       <nav className="flex flex-col gap-8">
         <SidebarNavItem
-          icon={<ImStatsDots size={20} />}
+          icon={ImStatsDots}
           label="메인 통계"
           linkUrl="/mainStat"
         />
         <SidebarNavItem
-          icon={<FaDiagramProject size={20} />}
+          icon={FaDiagramProject}
           label="서브 통계"
           linkUrl="/subStat"
         />
-        <SidebarNavItem
-          icon={<FaPerson size={20} />}
-          label="나의 정보"
-          linkUrl="/myPage"
-        />
+        <SidebarNavItem icon={FaPerson} label="나의 정보" linkUrl="/myPage" />
       </nav>
       <section>
         <article
