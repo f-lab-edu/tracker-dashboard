@@ -12,32 +12,14 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
-import { Route as EnrollImport } from './routes/enroll'
-import { Route as IndexImport } from './routes/index'
-import { Route as LoginImport } from './routes/login'
-import { Route as MainStatImport } from './routes/mainStat'
-import { Route as MyPageImport } from './routes/myPage'
-import { Route as SubStatImport } from './routes/subStat'
+import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index';
+import { Route as AuthenticatedMainStatImport } from './routes/_authenticated/mainStat';
+import { Route as AuthenticatedMyPageImport } from './routes/_authenticated/myPage';
+import { Route as AuthenticatedSubStatImport } from './routes/_authenticated/subStat';
+import { Route as EnrollImport } from './routes/enroll';
+import { Route as LoginImport } from './routes/login';
 
 // Create/Update Routes
-
-const SubStatRoute = SubStatImport.update({
-  id: '/subStat',
-  path: '/subStat',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const MyPageRoute = MyPageImport.update({
-  id: '/myPage',
-  path: '/myPage',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const MainStatRoute = MainStatImport.update({
-  id: '/mainStat',
-  path: '/mainStat',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const LoginRoute = LoginImport.update({
   id: '/login',
@@ -56,144 +38,171 @@ const AuthenticatedRoute = AuthenticatedImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
+const AuthenticatedIndexRoute = AuthenticatedIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
+  getParentRoute: () => AuthenticatedRoute,
+} as any);
+
+const AuthenticatedSubStatRoute = AuthenticatedSubStatImport.update({
+  id: '/subStat',
+  path: '/subStat',
+  getParentRoute: () => AuthenticatedRoute,
+} as any);
+
+const AuthenticatedMyPageRoute = AuthenticatedMyPageImport.update({
+  id: '/myPage',
+  path: '/myPage',
+  getParentRoute: () => AuthenticatedRoute,
+} as any);
+
+const AuthenticatedMainStatRoute = AuthenticatedMainStatImport.update({
+  id: '/mainStat',
+  path: '/mainStat',
+  getParentRoute: () => AuthenticatedRoute,
+} as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
     '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthenticatedImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/_authenticated';
+      path: '';
+      fullPath: '';
+      preLoaderRoute: typeof AuthenticatedImport;
+      parentRoute: typeof rootRoute;
+    };
     '/enroll': {
-      id: '/enroll'
-      path: '/enroll'
-      fullPath: '/enroll'
-      preLoaderRoute: typeof EnrollImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/enroll';
+      path: '/enroll';
+      fullPath: '/enroll';
+      preLoaderRoute: typeof EnrollImport;
+      parentRoute: typeof rootRoute;
+    };
     '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
-    }
-    '/mainStat': {
-      id: '/mainStat'
-      path: '/mainStat'
-      fullPath: '/mainStat'
-      preLoaderRoute: typeof MainStatImport
-      parentRoute: typeof rootRoute
-    }
-    '/myPage': {
-      id: '/myPage'
-      path: '/myPage'
-      fullPath: '/myPage'
-      preLoaderRoute: typeof MyPageImport
-      parentRoute: typeof rootRoute
-    }
-    '/subStat': {
-      id: '/subStat'
-      path: '/subStat'
-      fullPath: '/subStat'
-      preLoaderRoute: typeof SubStatImport
-      parentRoute: typeof rootRoute
-    }
+      id: '/login';
+      path: '/login';
+      fullPath: '/login';
+      preLoaderRoute: typeof LoginImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_authenticated/mainStat': {
+      id: '/_authenticated/mainStat';
+      path: '/mainStat';
+      fullPath: '/mainStat';
+      preLoaderRoute: typeof AuthenticatedMainStatImport;
+      parentRoute: typeof AuthenticatedImport;
+    };
+    '/_authenticated/myPage': {
+      id: '/_authenticated/myPage';
+      path: '/myPage';
+      fullPath: '/myPage';
+      preLoaderRoute: typeof AuthenticatedMyPageImport;
+      parentRoute: typeof AuthenticatedImport;
+    };
+    '/_authenticated/subStat': {
+      id: '/_authenticated/subStat';
+      path: '/subStat';
+      fullPath: '/subStat';
+      preLoaderRoute: typeof AuthenticatedSubStatImport;
+      parentRoute: typeof AuthenticatedImport;
+    };
+    '/_authenticated/': {
+      id: '/_authenticated/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof AuthenticatedIndexImport;
+      parentRoute: typeof AuthenticatedImport;
+    };
   }
 }
 
 // Create and export the route tree
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedMainStatRoute: typeof AuthenticatedMainStatRoute;
+  AuthenticatedMyPageRoute: typeof AuthenticatedMyPageRoute;
+  AuthenticatedSubStatRoute: typeof AuthenticatedSubStatRoute;
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute;
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedMainStatRoute: AuthenticatedMainStatRoute,
+  AuthenticatedMyPageRoute: AuthenticatedMyPageRoute,
+  AuthenticatedSubStatRoute: AuthenticatedSubStatRoute,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+};
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren
+);
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '': typeof AuthenticatedRoute
-  '/enroll': typeof EnrollRoute
-  '/login': typeof LoginRoute
-  '/mainStat': typeof MainStatRoute
-  '/myPage': typeof MyPageRoute
-  '/subStat': typeof SubStatRoute
+  '': typeof AuthenticatedRouteWithChildren;
+  '/enroll': typeof EnrollRoute;
+  '/login': typeof LoginRoute;
+  '/mainStat': typeof AuthenticatedMainStatRoute;
+  '/myPage': typeof AuthenticatedMyPageRoute;
+  '/subStat': typeof AuthenticatedSubStatRoute;
+  '/': typeof AuthenticatedIndexRoute;
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '': typeof AuthenticatedRoute
-  '/enroll': typeof EnrollRoute
-  '/login': typeof LoginRoute
-  '/mainStat': typeof MainStatRoute
-  '/myPage': typeof MyPageRoute
-  '/subStat': typeof SubStatRoute
+  '/enroll': typeof EnrollRoute;
+  '/login': typeof LoginRoute;
+  '/mainStat': typeof AuthenticatedMainStatRoute;
+  '/myPage': typeof AuthenticatedMyPageRoute;
+  '/subStat': typeof AuthenticatedSubStatRoute;
+  '/': typeof AuthenticatedIndexRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRoute
-  '/enroll': typeof EnrollRoute
-  '/login': typeof LoginRoute
-  '/mainStat': typeof MainStatRoute
-  '/myPage': typeof MyPageRoute
-  '/subStat': typeof SubStatRoute
+  __root__: typeof rootRoute;
+  '/_authenticated': typeof AuthenticatedRouteWithChildren;
+  '/enroll': typeof EnrollRoute;
+  '/login': typeof LoginRoute;
+  '/_authenticated/mainStat': typeof AuthenticatedMainStatRoute;
+  '/_authenticated/myPage': typeof AuthenticatedMyPageRoute;
+  '/_authenticated/subStat': typeof AuthenticatedSubStatRoute;
+  '/_authenticated/': typeof AuthenticatedIndexRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
+  fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
-    | '/'
     | ''
     | '/enroll'
     | '/login'
     | '/mainStat'
     | '/myPage'
     | '/subStat'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/enroll' | '/login' | '/mainStat' | '/myPage' | '/subStat'
+    | '/';
+  fileRoutesByTo: FileRoutesByTo;
+  to: '/enroll' | '/login' | '/mainStat' | '/myPage' | '/subStat' | '/';
   id:
     | '__root__'
-    | '/'
     | '/_authenticated'
     | '/enroll'
     | '/login'
-    | '/mainStat'
-    | '/myPage'
-    | '/subStat'
-  fileRoutesById: FileRoutesById
+    | '/_authenticated/mainStat'
+    | '/_authenticated/myPage'
+    | '/_authenticated/subStat'
+    | '/_authenticated/';
+  fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthenticatedRoute: typeof AuthenticatedRoute
-  EnrollRoute: typeof EnrollRoute
-  LoginRoute: typeof LoginRoute
-  MainStatRoute: typeof MainStatRoute
-  MyPageRoute: typeof MyPageRoute
-  SubStatRoute: typeof SubStatRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren;
+  EnrollRoute: typeof EnrollRoute;
+  LoginRoute: typeof LoginRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthenticatedRoute: AuthenticatedRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   EnrollRoute: EnrollRoute,
   LoginRoute: LoginRoute,
-  MainStatRoute: MainStatRoute,
-  MyPageRoute: MyPageRoute,
-  SubStatRoute: SubStatRoute,
-}
+};
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
@@ -205,20 +214,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
         "/_authenticated",
         "/enroll",
-        "/login",
-        "/mainStat",
-        "/myPage",
-        "/subStat"
+        "/login"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
-    },
     "/_authenticated": {
-      "filePath": "_authenticated.tsx"
+      "filePath": "_authenticated.tsx",
+      "children": [
+        "/_authenticated/mainStat",
+        "/_authenticated/myPage",
+        "/_authenticated/subStat",
+        "/_authenticated/"
+      ]
     },
     "/enroll": {
       "filePath": "enroll.tsx"
@@ -226,14 +234,21 @@ export const routeTree = rootRoute
     "/login": {
       "filePath": "login.tsx"
     },
-    "/mainStat": {
-      "filePath": "mainStat.tsx"
+    "/_authenticated/mainStat": {
+      "filePath": "_authenticated/mainStat.tsx",
+      "parent": "/_authenticated"
     },
-    "/myPage": {
-      "filePath": "myPage.tsx"
+    "/_authenticated/myPage": {
+      "filePath": "_authenticated/myPage.tsx",
+      "parent": "/_authenticated"
     },
-    "/subStat": {
-      "filePath": "subStat.tsx"
+    "/_authenticated/subStat": {
+      "filePath": "_authenticated/subStat.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/": {
+      "filePath": "_authenticated/index.tsx",
+      "parent": "/_authenticated"
     }
   }
 }

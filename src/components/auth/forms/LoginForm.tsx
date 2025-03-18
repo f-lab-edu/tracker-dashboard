@@ -7,7 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { AuthButton } from '../components/AuthButton';
 import { AuthInputValid } from '../components/AuthInputValid';
 
-interface LoginFromType {
+interface LoginForm {
   email: string;
   password: string;
 }
@@ -17,10 +17,10 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFromType>();
+  } = useForm<LoginForm>();
   const navigate = useNavigate();
   const setUser = useSetRecoilState(authState);
-  const handleLoginSubmit: SubmitHandler<LoginFromType> = async (data) => {
+  const handleLoginSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
       await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
         withCredentials: true,
@@ -86,7 +86,7 @@ export const LoginForm = () => {
               <AuthInputValid
                 key={name}
                 label={label}
-                name={name as Path<LoginFromType>}
+                name={name as Path<LoginForm>}
                 placeholder={placeholder}
                 validation={validation}
                 register={register}
