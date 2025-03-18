@@ -1,7 +1,6 @@
 import { API_BASE_URL } from '@/config/api';
 import { authState } from '@/store/authState';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
@@ -28,21 +27,6 @@ export const Sidebar = () => {
       toast.error('로그아웃 오류입니다');
     }
   };
-  const getClientSession = async () => {
-    try {
-      const response = await axios.get(
-        `${API_BASE_URL}/dashboard/sessionClient`,
-        { withCredentials: true }
-      );
-      setUser(response.data.user);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getClientSession();
-  }, []);
 
   return (
     <aside className="border-r text-text-200 border-text-200 min-w-48 flex flex-col justify-between pr-16">

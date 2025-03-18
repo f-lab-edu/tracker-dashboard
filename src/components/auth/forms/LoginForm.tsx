@@ -22,11 +22,10 @@ export const LoginForm = () => {
   const setUser = useSetRecoilState(authState);
   const handleLoginSubmit: SubmitHandler<LoginFromType> = async (data) => {
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/dashboard/loginClient`,
-        data,
-        { withCredentials: true }
-      );
+      await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
+        withCredentials: true,
+      });
+      await getClientSession();
       navigate('/');
     } catch (err) {
       console.error('요청 실패', err);
@@ -34,6 +33,18 @@ export const LoginForm = () => {
   };
   const moveToEnroll = () => {
     navigate('/enroll');
+  };
+
+  const getClientSession = async () => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/dashboard/sessionClient`,
+        { withCredentials: true }
+      );
+      setUser(response.data.user);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const loginValidationInputs = [
