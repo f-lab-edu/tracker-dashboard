@@ -2,29 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  @apply bg-gray-100 text-gray-900 font-sans;
-  color-scheme: light;
+  --primary-100: #FFD700;
+  --primary-200: #ddb900;
+  --primary-300: #917800;
+  
+  --accent-100: #c49216;
+  --accent-200: #5e3b00;
+  
+  --text-100: #dcdcdc;
+  --text-200: #929292;
+  
+  --bg-100: #1E1E1E;
+  --bg-200: #2d2d2d;
+  --bg-300: #454545;
 }
+
 * {
   pointer-events: auto !important;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    @apply bg-gray-900 text-white;
-  }
-} */
+body {
+  color: var(--text-100);
+  background-color: var(--bg-100);
+}
 
 a {
-  @apply text-blue-500 hover:text-blue-700 transition;
+  color: var(--text-100);
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--text-200);
 }
 
 button {
-  @apply bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md transition;
+  color: var(--text-100);
+  padding: 8px 16px; 
+  border-radius: 6px; 
+  transition: color 0.3s ease-in-out;
+}
+
+button:hover {
+  color: var(--text-200);
 }
 
 input,
 textarea {
-  @apply border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 rounded-md;
+  border: 1px solid var(--text-100); 
+  padding: 8px; 
+  border-radius: 6px; 
+  outline: none; 
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px var(--text-200); 
 }
