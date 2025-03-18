@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '@/config/api';
+import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { AuthButton } from '../components/AuthButton';
 import { AuthInputValid } from '../components/AuthInputValid';
 
@@ -23,7 +23,7 @@ export const EnrollForm = () => {
   const handleEnrollSubmit = async (data: EnrollFormType) => {
     try {
       await axios.post(`${API_BASE_URL}/dashboard/enrollClient`, data);
-      navigate('/login');
+      navigate({ to: '/login' });
     } catch (err) {
       console.error('가입요청 실패', err);
     }

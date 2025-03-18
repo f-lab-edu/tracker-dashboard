@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-interface User {
+export interface User {
   domain: string;
   apiKey: string;
   email: string;

@@ -1,8 +1,8 @@
 import { API_BASE_URL } from '@/config/api';
 import { authState } from '@/store/authState';
+import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { AuthButton } from '../components/AuthButton';
 import { AuthInputValid } from '../components/AuthInputValid';
@@ -26,13 +26,13 @@ export const LoginForm = () => {
         withCredentials: true,
       });
       await getClientSession();
-      navigate('/');
+      navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);
     }
   };
   const moveToEnroll = () => {
-    navigate('/enroll');
+    navigate({ to: '/enroll' });
   };
 
   const getClientSession = async () => {

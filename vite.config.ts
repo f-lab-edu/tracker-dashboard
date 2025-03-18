@@ -1,3 +1,4 @@
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react-swc';
 import fs from 'fs';
 import * as path from 'node:path';
@@ -9,7 +10,10 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    TanStackRouterVite({ target: 'react', autoCodeSplitting: true }),
+    react(),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
