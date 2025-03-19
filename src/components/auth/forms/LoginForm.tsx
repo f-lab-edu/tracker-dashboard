@@ -1,5 +1,4 @@
 import { API_BASE_URL } from '@/config/api';
-import { useUserStore } from '@/store/authState';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
@@ -18,17 +17,11 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginForm>();
   const navigate = useNavigate();
-  const setUser = useUserStore((state) => state.setUser);
   const handleLoginSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/dashboard/loginClient`,
-        data,
-        {
-          withCredentials: true,
-        }
-      );
-      setUser(response.data.user);
+      await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
+        withCredentials: true,
+      });
       navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);
