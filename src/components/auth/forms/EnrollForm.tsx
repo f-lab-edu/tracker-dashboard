@@ -2,8 +2,8 @@ import { API_BASE_URL } from '@/config/api';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, useForm } from 'react-hook-form';
-import { AuthButton } from '../components/AuthButton';
-import { AuthInputValid } from '../components/AuthInputValid';
+import { AuthButton } from '../AuthButton';
+import { AuthInputValid } from '../AuthInputValid';
 
 interface EnrollFormType {
   email: string;
