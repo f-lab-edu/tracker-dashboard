@@ -3,8 +3,8 @@ import { useUserStore } from '@/store/authState';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
-import { AuthButton } from '../components/AuthButton';
-import { AuthInputValid } from '../components/AuthInputValid';
+import { AuthButton } from '../AuthButton';
+import { AuthInputValid } from '../AuthInputValid';
 
 interface LoginForm {
   email: string;
@@ -28,9 +28,7 @@ export const LoginForm = () => {
           withCredentials: true,
         }
       );
-      if (response.data) {
-        await getClientSession();
-      }
+      setUser(response.data.user);
       navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);
@@ -38,18 +36,6 @@ export const LoginForm = () => {
   };
   const moveToEnroll = () => {
     navigate({ to: '/enroll' });
-  };
-
-  const getClientSession = async () => {
-    try {
-      const response = await axios.get(
-        `${API_BASE_URL}/dashboard/sessionClient`,
-        { withCredentials: true }
-      );
-      setUser(response.data.user);
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   const loginValidationInputs = [
