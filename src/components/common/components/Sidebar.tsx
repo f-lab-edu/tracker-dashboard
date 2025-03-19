@@ -1,6 +1,6 @@
 import { API_BASE_URL } from '@/config/api';
 import { useUserStore } from '@/store/authState';
-import { useNavigate } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
@@ -11,14 +11,15 @@ import { SidebarNavItem } from './ui/SidebarNavItem';
 export const Sidebar = () => {
   const { user, setUser } = useUserStore();
   const navigate = useNavigate();
-  const handleMoveToHome = () => {
-    navigate({ to: '/' });
-  };
   const handleLogout = () => {
     try {
-      axios.get(`${API_BASE_URL}/dashboard/logoutClient`, {
-        withCredentials: true,
-      });
+      axios.post(
+        `${API_BASE_URL}/dashboard/logoutClient`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       setUser(null);
       navigate({ to: '/login' });
     } catch (err) {
@@ -30,11 +31,10 @@ export const Sidebar = () => {
   return (
     <aside className="border-r text-text-200 border-text-200 min-w-48 flex flex-col justify-between pr-16">
       <section className="flex flex-col gap-8">
-        <h1
-          onClick={handleMoveToHome}
-          className="text-2xl text-primary-100 cursor-pointer"
-        >
-          Tracker Dashboard
+        <h1>
+          <Link to="/" className="text-2xl text-primary-100 cursor-pointer">
+            Tracker Dashboard
+          </Link>
         </h1>
         <div>
           <p>{user?.domain}님</p>
