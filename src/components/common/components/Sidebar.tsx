@@ -1,6 +1,6 @@
 import { API_BASE_URL } from '@/config/api';
 import { useUserStore } from '@/store/authState';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
@@ -27,20 +27,23 @@ export const Sidebar = () => {
       toast.error('로그아웃 오류입니다');
     }
   };
+  const moveToHome = () => {
+    navigate({ to: '/' });
+  };
 
   return (
     <aside className="border-r text-text-200 border-text-200 min-w-48 flex flex-col justify-between pr-16">
-      <section className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <h1>
-          <Link to="/" className="text-2xl text-primary-100 cursor-pointer">
+          <button onClick={moveToHome} className="text-2xl text-primary-100">
             Tracker Dashboard
-          </Link>
+          </button>
         </h1>
         <div>
           <p>{user?.domain}님</p>
           <p>{user?.email}</p>
         </div>
-      </section>
+      </div>
       <nav className="flex flex-col gap-8">
         <SidebarNavItem
           icon={ImStatsDots}
@@ -54,17 +57,17 @@ export const Sidebar = () => {
         />
         <SidebarNavItem icon={FaPerson} label="나의 정보" linkUrl="/myPage" />
       </nav>
-      <section>
-        <article
+      <div>
+        <button
           onClick={handleLogout}
-          className="flex items-center gap-4 cursor-pointer"
+          className="flex items-center gap-4 text-text-200"
         >
           <div className="flex items-center">
             <MdLogout size={30} />
           </div>
           <p>Logout</p>
-        </article>
-      </section>
+        </button>
+      </div>
       <ToastContainer />
     </aside>
   );

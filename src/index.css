@@ -29,14 +29,8 @@ body {
 }
 
 button {
-  color: var(--text-100);
   padding: 8px 16px; 
   border-radius: 6px; 
-  transition: color 0.3s ease-in-out;
-}
-
-button:hover {
-  color: var(--text-200);
 }
 
 input,
