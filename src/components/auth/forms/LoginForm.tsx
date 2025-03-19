@@ -21,10 +21,16 @@ export const LoginForm = () => {
   const setUser = useUserStore((state) => state.setUser);
   const handleLoginSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
-      await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
-        withCredentials: true,
-      });
-      await getClientSession();
+      const response = await axios.post(
+        `${API_BASE_URL}/dashboard/loginClient`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      if (response.data) {
+        await getClientSession();
+      }
       navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);
