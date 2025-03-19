@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          100: '#FFD700',
+          100: '#ffd700',
           200: '#ddb900',
           300: '#917800',
         },
@@ -19,7 +19,7 @@ export default {
           200: '#929292',
         },
         background: {
-          100: '#1E1E1E',
+          100: '#1e1e1e',
           200: '#2d2d2d',
           300: '#454545',
         },

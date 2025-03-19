@@ -28,15 +28,6 @@ body {
   background-color: var(--bg-100);
 }
 
-a {
-  color: var(--text-100);
-  transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-  color: var(--text-200);
-}
-
 button {
   color: var(--text-100);
   padding: 8px 16px; 
