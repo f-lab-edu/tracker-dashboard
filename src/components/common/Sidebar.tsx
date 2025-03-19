@@ -7,7 +7,7 @@ import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
 import { toast, ToastContainer } from 'react-toastify';
-import { SidebarNavItem } from './ui/SidebarNavItem';
+import { SidebarNavItem } from './SidebarNavItem';
 
 interface userSessionType {
   email: string;

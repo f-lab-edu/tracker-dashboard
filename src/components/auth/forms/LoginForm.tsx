@@ -5,7 +5,7 @@ import { Path, SubmitHandler, useForm } from 'react-hook-form';
 import { AuthButton } from '../AuthButton';
 import { AuthInputValid } from '../AuthInputValid';
 
-interface LoginForm {
+interface LoginFormType {
   email: string;
   password: string;
 }
@@ -15,9 +15,9 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>();
+  } = useForm<LoginFormType>();
   const navigate = useNavigate();
-  const handleLoginSubmit: SubmitHandler<LoginForm> = async (data) => {
+  const handleLoginSubmit: SubmitHandler<LoginFormType> = async (data) => {
     try {
       await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
         withCredentials: true,
@@ -70,7 +70,7 @@ export const LoginForm = () => {
               <AuthInputValid
                 key={name}
                 label={label}
-                name={name as Path<LoginForm>}
+                name={name as Path<LoginFormType>}
                 placeholder={placeholder}
                 validation={validation}
                 register={register}
