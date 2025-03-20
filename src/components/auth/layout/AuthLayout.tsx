@@ -1,10 +1,12 @@
-import { useLocation } from 'react-router-dom';
-import loginImg from '../../assets/auth/loginImg.jpg';
-import { EnrollForm } from './EnrollForm';
-import { LoginForm } from './LoginForm';
+import { useRouterState } from '@tanstack/react-router';
+import loginImg from '../../../assets/auth/loginImg.jpg';
+import { EnrollForm } from '../forms/EnrollForm';
+import { LoginForm } from '../forms/LoginForm';
+
 export const AuthLayout = () => {
-  const location = useLocation();
+  const { location } = useRouterState();
   const isLogin = location.pathname === '/login';
+
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <div className="flex w-[1000px] bg-white shadow-lg rounded-lg p-4 items-stretch min-h-[500px]">

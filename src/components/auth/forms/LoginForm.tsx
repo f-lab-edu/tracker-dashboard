@@ -1,10 +1,11 @@
 import { API_BASE_URL } from '@/config/api';
+import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { AuthButton } from './ui/authButton';
-import { AuthInputValid } from './ui/AuthInputValid';
-interface LoginFromType {
+import { AuthButton } from '../AuthButton';
+import { AuthInputValid } from '../AuthInputValid';
+
+interface LoginFormType {
   email: string;
   password: string;
 }
@@ -14,21 +15,20 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFromType>();
+  } = useForm<LoginFormType>();
   const navigate = useNavigate();
-  const handleLoginSubmit: SubmitHandler<LoginFromType> = async (data) => {
+  const handleLoginSubmit: SubmitHandler<LoginFormType> = async (data) => {
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/dashboard/loginClient`,
-        data
-      );
-      navigate('/');
+      await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
+        withCredentials: true,
+      });
+      navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);
     }
   };
   const moveToEnroll = () => {
-    navigate('/enroll');
+    navigate({ to: '/enroll' });
   };
 
   const loginValidationInputs = [
@@ -70,7 +70,7 @@ export const LoginForm = () => {
               <AuthInputValid
                 key={name}
                 label={label}
-                name={name as Path<LoginFromType>}
+                name={name as Path<LoginFormType>}
                 placeholder={placeholder}
                 validation={validation}
                 register={register}
