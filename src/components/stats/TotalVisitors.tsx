@@ -18,7 +18,7 @@ export const TotalVisitors = () => {
   if (error) return <p>에러발생 </p>;
 
   return (
-    <Card bgColor="primary-100" borderRadius="xl" width="auto">
+    <Card bgColor="bg-primary-100" borderRadius="xl" width="fit">
       <div className="flex gap-4 text-accent-200">
         <div>
           <p className="text-lg font-bold">Total Visitors</p>
