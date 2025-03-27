@@ -2,6 +2,7 @@ import { API_BASE_URL } from '@/config/api';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { PieChartWrapper } from '../charts/PieChartWrapper';
+import { Card } from '../common/Card';
 
 export const UserDevices = () => {
   const { data, isLoading, error } = useQuery({
@@ -20,10 +21,17 @@ export const UserDevices = () => {
     value: item.count,
   }));
   return (
-    <PieChartWrapper
-      data={deviceData}
-      colors={['#FFD700', '#917800']}
-      title="userDevice Stats"
-    />
+    <Card width="fit">
+      <PieChartWrapper
+        data={deviceData}
+        dataKey={'value'}
+        nameKey={'name'}
+        colors={['#FFD700', '#917800']}
+        title="userDevice Stats"
+        chartWidth={300}
+        chartHeight={300}
+        chartRadius={80}
+      />
+    </Card>
   );
 };
