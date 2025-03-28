@@ -1,2 +1,0 @@
-export const QUERY_REFETCH_INTERVAL_MS = 10000;
-export const QUERY_NOT_STALE_TIME_MS = 0;
