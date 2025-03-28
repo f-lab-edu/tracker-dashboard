@@ -1,26 +1,18 @@
-import { API_BASE_URL } from '@/config/api';
-import {
-  QUERY_NOT_STALE_TIME_MS,
-  QUERY_REFETCH_INTERVAL_MS,
-} from '@/lib/constant';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { getAxiosData } from '@/utils/api';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { FiActivity } from 'react-icons/fi';
 import { Card } from '../common/Card';
+
+interface ReturnVisitRateDataType {
+  domain: string;
+  visitedUsersRate: number;
+}
+
 export const ReturnVisitRate = () => {
-  const { data, isLoading, error } = useQuery({
+  const { data } = useSuspenseQuery<ReturnVisitRateDataType>({
     queryKey: ['returnVisitRate'],
-    queryFn: async () => {
-      const res = await axios.get(`${API_BASE_URL}/dashboard/visitedRate`, {
-        withCredentials: true,
-      });
-      return res.data;
-    },
-    refetchInterval: QUERY_REFETCH_INTERVAL_MS,
-    staleTime: QUERY_NOT_STALE_TIME_MS,
+    queryFn: () => getAxiosData('/dashboard/visitedRate'),
   });
-  if (isLoading) return <p>로딩중</p>;
-  if (error) return <p>에러발생 </p>;
 
   const roundedReturnRate = Math.round(data.visitedUsersRate);
   return (

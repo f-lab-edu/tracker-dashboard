@@ -1,32 +1,33 @@
-import { API_BASE_URL } from '@/config/api';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { BarChartWrapper } from '../charts/BarChartWrapper';
+import { getAxiosData } from '@/utils/api';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
+import { Title } from '../common/Title';
+
+interface ResolutionDataType {
+  resolution: string;
+  count: number;
+}
 
 export const UserResolutions = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['userResolution'],
-    queryFn: async () => {
-      const res = await axios(`${API_BASE_URL}/dashboard/resolutionStats`, {
-        withCredentials: true,
-      });
-      return res.data;
-    },
+  const { data } = useSuspenseQuery<ResolutionDataType[]>({
+    queryKey: ['resolutionStats'],
+    queryFn: () => getAxiosData('/dashboard/resolutionStats'),
   });
-  if (isLoading) return <p>로딩중</p>;
-  if (error) return <p>에러발생</p>;
+
+  const resolutionData = data.map(
+    (item: { resolution: string; count: number }) => ({
+      name: item.resolution,
+      count: item.count,
+    })
+  );
+
   return (
     <Card width="fit">
-      <BarChartWrapper
-        data={data}
-        labelKey="resolution"
-        valueKey="count"
-        title="userResolution Stats"
+      <Title title="Resolution Stats" />
+      <BarChartTemplate
+        data={resolutionData}
         barColor="#FFD700"
-        barBg="#5e3b00"
-        chartWidth={450}
-        chartHeight={300}
         marginRight={50}
         marginTop={20}
       />

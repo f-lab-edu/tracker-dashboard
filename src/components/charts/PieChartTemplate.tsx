@@ -1,8 +1,12 @@
 import { Cell, Legend, Pie, PieChart } from 'recharts';
 
+interface PieChartDataType {
+  name: string;
+  value: number;
+}
 interface PieChartTemplateProps {
   colors: string[];
-  data: string[];
+  data: PieChartDataType[];
 }
 
 export const PieChartTemplate = ({ data, colors }: PieChartTemplateProps) => {
