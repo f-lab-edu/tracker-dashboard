@@ -1,5 +1,6 @@
 import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
+import { OnlineUsers } from '@/components/stats/OnlineUsers';
 import { ReturnVisitRate } from '@/components/stats/ReturnVisitRate';
 import { TotalVisitors } from '@/components/stats/TotalVisitors';
 import { UserDevices } from '@/components/stats/UserDevices';
@@ -13,6 +14,7 @@ export const MainPage = () => {
       <div className="flex gap-8">
         <TotalVisitors />
         <ReturnVisitRate />
+        <OnlineUsers />
       </div>
       <div className="flex gap-8">
         <UserDevices />
