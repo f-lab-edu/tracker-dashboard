@@ -1,28 +1,39 @@
-import { getUserSession } from '@/lib/auth';
+import { ErrorFallback } from '@/components/common/ErrorFallback';
+import { getAxiosData } from '@/utils/api';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+
+interface SessionDataType {
+  email: string;
+  domain: string;
+  apiKey: string;
+}
 
 const Authenticated = () => {
-  const [user, setUser] = useState(null);
-  const [isLoading, setLoading] = useState(true);
+  const { data } = useSuspenseQuery<SessionDataType>({
+    queryKey: ['userSession'],
+    queryFn: () => getAxiosData('/dashboard/sessionClient'),
+    staleTime: 1000 * 60 * 5,
+  });
 
-  useEffect(() => {
-    (async () => {
-      const userSession = await getUserSession();
-      setUser(userSession);
-      setLoading(false);
-    })();
-  }, []);
-
-  if (isLoading === true) {
-    return <p>로딩중...</p>;
-  }
-  if (!user) {
+  if (!data) {
     return <Navigate to="/login" />;
   }
   return <Outlet />;
 };
 
 export const Route = createFileRoute('/_authenticated')({
-  component: () => <Authenticated />,
+  component: () => (
+    <ErrorBoundary
+      fallbackRender={({ error, resetErrorBoundary }) => (
+        <ErrorFallback error={error} resetErrorBoundary={resetErrorBoundary} />
+      )}
+    >
+      <Suspense fallback={<p>로딩중입니다</p>}>
+        <Authenticated />,
+      </Suspense>
+    </ErrorBoundary>
+  ),
 });

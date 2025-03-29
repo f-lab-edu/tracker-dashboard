@@ -58,11 +58,7 @@ export const Sidebar = () => {
         </div>
       </div>
       <nav className="flex flex-col gap-8">
-        <SidebarNavItem
-          icon={ImStatsDots}
-          label="메인 통계"
-          linkUrl="/mainStat"
-        />
+        <SidebarNavItem icon={ImStatsDots} label="메인 통계" linkUrl="/" />
         <SidebarNavItem
           icon={FaDiagramProject}
           label="서브 통계"
