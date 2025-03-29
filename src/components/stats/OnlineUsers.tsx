@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MdOnlinePrediction } from 'react-icons/md';
 import { Card } from '../common/Card';
@@ -10,7 +10,7 @@ interface OnlineUsersDataType {
 export const OnlineUsers = () => {
   const { data } = useSuspenseQuery<OnlineUsersDataType>({
     queryKey: ['onlineUser'],
-    queryFn: () => getAxiosData('/dashboard/onlineUsersCount'),
+    queryFn: () => fetchData('/dashboard/onlineUsersCount'),
     refetchInterval: 10000,
     staleTime: 0,
   });

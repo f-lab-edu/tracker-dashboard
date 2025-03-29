@@ -1,5 +1,5 @@
 import { ErrorFallback } from '@/components/common/ErrorFallback';
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
 import { Suspense } from 'react';
@@ -14,7 +14,7 @@ interface SessionDataType {
 const Authenticated = () => {
   const { data } = useSuspenseQuery<SessionDataType>({
     queryKey: ['userSession'],
-    queryFn: () => getAxiosData('/dashboard/sessionClient'),
+    queryFn: () => fetchData('/dashboard/sessionClient'),
     staleTime: 1000 * 60 * 5,
   });
 

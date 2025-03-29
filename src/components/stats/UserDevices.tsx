@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
@@ -12,7 +12,7 @@ interface UserDevicesDataType {
 export const UserDevices = () => {
   const { data } = useSuspenseQuery<UserDevicesDataType[]>({
     queryKey: ['userDevice'],
-    queryFn: () => getAxiosData('/dashboard/deviceStats'),
+    queryFn: () => fetchData('/dashboard/deviceStats'),
   });
 
   const deviceData = data.map((item: { isMobile: number; count: number }) => ({

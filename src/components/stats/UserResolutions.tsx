@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
@@ -12,7 +12,7 @@ interface ResolutionDataType {
 export const UserResolutions = () => {
   const { data } = useSuspenseQuery<ResolutionDataType[]>({
     queryKey: ['resolutionStats'],
-    queryFn: () => getAxiosData('/dashboard/resolutionStats'),
+    queryFn: () => fetchData('/dashboard/resolutionStats'),
   });
 
   const resolutionData = data.map(

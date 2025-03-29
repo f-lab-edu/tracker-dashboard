@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { FiActivity } from 'react-icons/fi';
 import { Card } from '../common/Card';
@@ -11,7 +11,7 @@ interface ReturnVisitRateDataType {
 export const ReturnVisitRate = () => {
   const { data } = useSuspenseQuery<ReturnVisitRateDataType>({
     queryKey: ['returnVisitRate'],
-    queryFn: () => getAxiosData('/dashboard/visitedRate'),
+    queryFn: () => fetchData('/dashboard/visitedRate'),
   });
 
   const roundedReturnRate = Math.round(data.visitedUsersRate);

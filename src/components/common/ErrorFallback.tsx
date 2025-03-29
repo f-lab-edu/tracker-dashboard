@@ -12,7 +12,7 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
         className="mt-4 px-4 py-2 bg-red-500 text-white font-semibold rounded-md shadow hover:bg-red-600 transition"
         onClick={resetErrorBoundary}
       >
-        새로고침
+        재시도
       </button>
     </div>
   );

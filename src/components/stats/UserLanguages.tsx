@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
@@ -12,7 +12,7 @@ interface UserLanguagesDataType {
 export const UserLanguages = () => {
   const { data } = useSuspenseQuery<UserLanguagesDataType[]>({
     queryKey: ['userLanguage'],
-    queryFn: () => getAxiosData('/dashboard/languageStats'),
+    queryFn: () => fetchData('/dashboard/languageStats'),
   });
 
   const languageData = data.map(

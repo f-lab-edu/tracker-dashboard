@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 export const useAxiosQuery = <T>(
@@ -8,7 +8,7 @@ export const useAxiosQuery = <T>(
 ) => {
   return useQuery<T>({
     queryKey,
-    queryFn: () => getAxiosData(url),
+    queryFn: () => fetchData(url),
     ...options,
   });
 };

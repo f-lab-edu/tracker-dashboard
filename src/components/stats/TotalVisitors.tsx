@@ -1,4 +1,4 @@
-import { getAxiosData } from '@/utils/api';
+import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { Card } from '../common/Card';
 
@@ -10,7 +10,7 @@ interface TotalVisitorsDataType {
 export const TotalVisitors = () => {
   const { data } = useSuspenseQuery<TotalVisitorsDataType[]>({
     queryKey: ['totalVisitors'],
-    queryFn: () => getAxiosData('/dashboard/totalVisitorsCount'),
+    queryFn: () => fetchData('/dashboard/totalVisitorsCount'),
   });
   const { totalVisitCount, uniqueVisitors } = data[0];
 
