@@ -1,20 +1,10 @@
-import { fetchData } from '@/utils/api';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-
-interface ResolutionDataType {
-  resolution: string;
-  count: number;
-}
+import { useUserResolution } from '../hook/useResolutions';
 
 export const UserResolutions = () => {
-  const { data } = useSuspenseQuery<ResolutionDataType[]>({
-    queryKey: ['resolutionStats'],
-    queryFn: () => fetchData('/dashboard/resolutionStats'),
-  });
-
+  const { data } = useUserResolution();
   const resolutionData = data.map(
     (item: { resolution: string; count: number }) => ({
       name: item.resolution,

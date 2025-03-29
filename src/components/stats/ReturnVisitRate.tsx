@@ -1,20 +1,11 @@
-import { fetchData } from '@/utils/api';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { FiActivity } from 'react-icons/fi';
 import { Card } from '../common/Card';
-
-interface ReturnVisitRateDataType {
-  domain: string;
-  visitedUsersRate: number;
-}
+import { useReturnVisitRate } from '../hook/useReturnVisitRate';
 
 export const ReturnVisitRate = () => {
-  const { data } = useSuspenseQuery<ReturnVisitRateDataType>({
-    queryKey: ['returnVisitRate'],
-    queryFn: () => fetchData('/dashboard/visitedRate'),
-  });
-
+  const { data } = useReturnVisitRate();
   const roundedReturnRate = Math.round(data.visitedUsersRate);
+
   return (
     <Card borderRadius="xl" width="fit">
       <div>

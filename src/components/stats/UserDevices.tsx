@@ -1,24 +1,15 @@
-import { fetchData } from '@/utils/api';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-
-interface UserDevicesDataType {
-  isMobile: number;
-  count: number;
-}
+import { useUserDevices } from '../hook/useUserDevices';
 
 export const UserDevices = () => {
-  const { data } = useSuspenseQuery<UserDevicesDataType[]>({
-    queryKey: ['userDevice'],
-    queryFn: () => fetchData('/dashboard/deviceStats'),
-  });
-
+  const { data } = useUserDevices();
   const deviceData = data.map((item: { isMobile: number; count: number }) => ({
     name: item.isMobile === 1 ? 'Mobile' : 'Desktop',
     value: item.count,
   }));
+
   return (
     <Card width="fit">
       <Title title="Device Stats" />

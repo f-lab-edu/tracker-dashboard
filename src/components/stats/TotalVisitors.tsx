@@ -1,17 +1,8 @@
-import { fetchData } from '@/utils/api';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { Card } from '../common/Card';
-
-interface TotalVisitorsDataType {
-  totalVisitCount: string;
-  uniqueVisitors: number;
-}
+import { useTotalVisitors } from '../hook/useTotalVisitors';
 
 export const TotalVisitors = () => {
-  const { data } = useSuspenseQuery<TotalVisitorsDataType[]>({
-    queryKey: ['totalVisitors'],
-    queryFn: () => fetchData('/dashboard/totalVisitorsCount'),
-  });
+  const { data } = useTotalVisitors();
   const { totalVisitCount, uniqueVisitors } = data[0];
 
   return (

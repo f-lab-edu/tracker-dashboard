@@ -1,19 +1,9 @@
-import { fetchData } from '@/utils/api';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { MdOnlinePrediction } from 'react-icons/md';
 import { Card } from '../common/Card';
-
-interface OnlineUsersDataType {
-  onlineUsersCount: number;
-}
+import { useOnlineUser } from '../hook/useOnlineUsers';
 
 export const OnlineUsers = () => {
-  const { data } = useSuspenseQuery<OnlineUsersDataType>({
-    queryKey: ['onlineUser'],
-    queryFn: () => fetchData('/dashboard/onlineUsersCount'),
-    refetchInterval: 10000,
-    staleTime: 0,
-  });
+  const { data } = useOnlineUser();
 
   return (
     <Card borderRadius="xl" width="fit">

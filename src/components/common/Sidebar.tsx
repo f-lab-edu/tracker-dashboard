@@ -11,7 +11,6 @@ import { SidebarNavItem } from './SidebarNavItem';
 export const Sidebar = () => {
   const navigate = useNavigate();
   const { data: { user } = {} } = useSession();
-
   const handleLogout = () => {
     try {
       axios.post(
