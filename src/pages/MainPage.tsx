@@ -1,5 +1,6 @@
 import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
+import { WithBoundarySuspense } from '@/components/common/withBoundarySuspense';
 import { OnlineUsers } from '@/components/stats/OnlineUsers';
 import { ReturnVisitRate } from '@/components/stats/ReturnVisitRate';
 import { TotalVisitors } from '@/components/stats/TotalVisitors';
@@ -12,14 +13,26 @@ export const MainPage = () => {
     <CommonLayout>
       <DashboardSlogan />
       <div className="flex gap-8">
-        <TotalVisitors />
-        <ReturnVisitRate />
-        <OnlineUsers />
+        <WithBoundarySuspense>
+          <TotalVisitors />
+        </WithBoundarySuspense>
+        <WithBoundarySuspense>
+          <ReturnVisitRate />
+        </WithBoundarySuspense>
+        <WithBoundarySuspense>
+          <OnlineUsers />
+        </WithBoundarySuspense>
       </div>
       <div className="flex gap-8">
-        <UserDevices />
-        <UserResolutions />
-        <UserLanguages />
+        <WithBoundarySuspense>
+          <UserDevices />
+        </WithBoundarySuspense>
+        <WithBoundarySuspense>
+          <UserResolutions />
+        </WithBoundarySuspense>
+        <WithBoundarySuspense>
+          <UserLanguages />
+        </WithBoundarySuspense>
       </div>
     </CommonLayout>
   );
