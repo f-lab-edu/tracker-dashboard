@@ -21,8 +21,11 @@ export const PieChartTemplate = ({ data, colors }: PieChartTemplateProps) => {
         outerRadius="50"
         label
       >
-        {data.map((_, idx) => (
-          <Cell key={idx} fill={colors[idx % colors.length]} />
+        {data.map((item, idx) => (
+          <Cell
+            key={`${item.name}-${item.value}`}
+            fill={colors[idx % colors.length]}
+          />
         ))}
       </Pie>
       <Legend verticalAlign="bottom" />
