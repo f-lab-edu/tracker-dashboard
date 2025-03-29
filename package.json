@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.13",
+    "@tanstack/react-query": "^5.69.0",
     "@tanstack/react-router": "^1.114.23",
     "axios": "^1.8.3",
     "clsx": "^2.1.1",
@@ -18,9 +19,11 @@
     "postCss": "npm:postcss@^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-error-boundary": "^5.0.0",
     "react-hook-form": "^7.54.2",
     "react-icons": "^5.5.0",
     "react-toastify": "^11.0.5",
+    "recharts": "^2.15.1",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

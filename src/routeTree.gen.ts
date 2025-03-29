@@ -17,7 +17,6 @@ import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as AuthenticatedIndexImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedSubStatImport } from './routes/_authenticated/subStat'
 import { Route as AuthenticatedMyPageImport } from './routes/_authenticated/myPage'
-import { Route as AuthenticatedMainStatImport } from './routes/_authenticated/mainStat'
 
 // Create/Update Routes
 
@@ -56,12 +55,6 @@ const AuthenticatedMyPageRoute = AuthenticatedMyPageImport.update({
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const AuthenticatedMainStatRoute = AuthenticatedMainStatImport.update({
-  id: '/mainStat',
-  path: '/mainStat',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
-
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -86,13 +79,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/login'
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
-    }
-    '/_authenticated/mainStat': {
-      id: '/_authenticated/mainStat'
-      path: '/mainStat'
-      fullPath: '/mainStat'
-      preLoaderRoute: typeof AuthenticatedMainStatImport
-      parentRoute: typeof AuthenticatedImport
     }
     '/_authenticated/myPage': {
       id: '/_authenticated/myPage'
@@ -121,14 +107,12 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface AuthenticatedRouteChildren {
-  AuthenticatedMainStatRoute: typeof AuthenticatedMainStatRoute
   AuthenticatedMyPageRoute: typeof AuthenticatedMyPageRoute
   AuthenticatedSubStatRoute: typeof AuthenticatedSubStatRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
-  AuthenticatedMainStatRoute: AuthenticatedMainStatRoute,
   AuthenticatedMyPageRoute: AuthenticatedMyPageRoute,
   AuthenticatedSubStatRoute: AuthenticatedSubStatRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
@@ -142,7 +126,6 @@ export interface FileRoutesByFullPath {
   '': typeof AuthenticatedRouteWithChildren
   '/enroll': typeof EnrollRoute
   '/login': typeof LoginRoute
-  '/mainStat': typeof AuthenticatedMainStatRoute
   '/myPage': typeof AuthenticatedMyPageRoute
   '/subStat': typeof AuthenticatedSubStatRoute
   '/': typeof AuthenticatedIndexRoute
@@ -151,7 +134,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/enroll': typeof EnrollRoute
   '/login': typeof LoginRoute
-  '/mainStat': typeof AuthenticatedMainStatRoute
   '/myPage': typeof AuthenticatedMyPageRoute
   '/subStat': typeof AuthenticatedSubStatRoute
   '/': typeof AuthenticatedIndexRoute
@@ -162,7 +144,6 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/enroll': typeof EnrollRoute
   '/login': typeof LoginRoute
-  '/_authenticated/mainStat': typeof AuthenticatedMainStatRoute
   '/_authenticated/myPage': typeof AuthenticatedMyPageRoute
   '/_authenticated/subStat': typeof AuthenticatedSubStatRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
@@ -170,22 +151,14 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | ''
-    | '/enroll'
-    | '/login'
-    | '/mainStat'
-    | '/myPage'
-    | '/subStat'
-    | '/'
+  fullPaths: '' | '/enroll' | '/login' | '/myPage' | '/subStat' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/enroll' | '/login' | '/mainStat' | '/myPage' | '/subStat' | '/'
+  to: '/enroll' | '/login' | '/myPage' | '/subStat' | '/'
   id:
     | '__root__'
     | '/_authenticated'
     | '/enroll'
     | '/login'
-    | '/_authenticated/mainStat'
     | '/_authenticated/myPage'
     | '/_authenticated/subStat'
     | '/_authenticated/'
@@ -222,7 +195,6 @@ export const routeTree = rootRoute
     "/_authenticated": {
       "filePath": "_authenticated.tsx",
       "children": [
-        "/_authenticated/mainStat",
         "/_authenticated/myPage",
         "/_authenticated/subStat",
         "/_authenticated/"
@@ -233,10 +205,6 @@ export const routeTree = rootRoute
     },
     "/login": {
       "filePath": "login.tsx"
-    },
-    "/_authenticated/mainStat": {
-      "filePath": "_authenticated/mainStat.tsx",
-      "parent": "/_authenticated"
     },
     "/_authenticated/myPage": {
       "filePath": "_authenticated/myPage.tsx",
