@@ -7,7 +7,9 @@ export const CommonLayout = ({ children }: { children: React.ReactNode }) => {
       <WithBoundarySuspense>
         <Sidebar />
       </WithBoundarySuspense>
-      <div className="flex-1 mx-8">{children}</div>
+      <div className="flex-1 mx-8 flex flex-col justify-between">
+        {children}
+      </div>
     </div>
   );
 };

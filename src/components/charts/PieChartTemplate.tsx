@@ -11,7 +11,7 @@ interface PieChartTemplateProps {
 
 export const PieChartTemplate = ({ data, colors }: PieChartTemplateProps) => {
   return (
-    <PieChart width={200} height={250}>
+    <PieChart width={200} height={200}>
       <Pie
         data={data}
         dataKey="value"

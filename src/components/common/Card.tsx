@@ -23,7 +23,7 @@ export const Card = ({
   };
   return (
     <div
-      className={`p-4 w-fit mb-8 ${bgColor} ${borderRadiusList[borderRadius]} ${widthList[width]}`}
+      className={`p-4 w-fit ${bgColor} ${borderRadiusList[borderRadius]} ${widthList[width]}`}
     >
       {children}
     </div>

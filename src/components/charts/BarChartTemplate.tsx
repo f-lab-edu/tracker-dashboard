@@ -29,7 +29,7 @@ export const BarChartTemplate = ({
   return (
     <BarChart
       width={450}
-      height={250}
+      height={200}
       data={data}
       margin={{ right: marginRight, top: marginTop }}
     >
