@@ -1,7 +1,7 @@
 import { Sidebar } from '../Sidebar';
-import { WithBoundarySuspense } from '../withBoundarySuspense';
+import { WithBoundarySuspense } from '../WithBoundarySuspense';
 
-export const CommonLayout = ({ children }: { children: React.ReactNode }) => {
+export const CommonLayout = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="min-h-screen w-full flex p-8">
       <WithBoundarySuspense>
