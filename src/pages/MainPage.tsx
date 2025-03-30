@@ -1,6 +1,6 @@
 import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
-import { WithBoundarySuspense } from '@/components/common/withBoundarySuspense';
+import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
 import { OnlineUsers } from '@/components/stats/OnlineUsers';
 import { ReturnVisitRate } from '@/components/stats/ReturnVisitRate';
 import { TotalVisitors } from '@/components/stats/TotalVisitors';
@@ -8,7 +8,6 @@ import { UserCountries } from '@/components/stats/UserCountries';
 import { UserDevices } from '@/components/stats/UserDevices';
 import { UserLanguages } from '@/components/stats/UserLanguages';
 import { UserResolutions } from '@/components/stats/UserResolutions';
-
 export const MainPage = () => {
   return (
     <CommonLayout>
@@ -30,7 +29,6 @@ export const MainPage = () => {
             <WithBoundarySuspense>
               <UserDevices />
             </WithBoundarySuspense>
-
             <WithBoundarySuspense>
               <UserCountries />
             </WithBoundarySuspense>
