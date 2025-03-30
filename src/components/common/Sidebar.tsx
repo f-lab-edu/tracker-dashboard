@@ -1,23 +1,16 @@
 import { API_BASE_URL } from '@/config/api';
-import { getUserSession } from '@/lib/auth';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
 import { toast, ToastContainer } from 'react-toastify';
+import { useSession } from '../hook/useSession';
 import { SidebarNavItem } from './SidebarNavItem';
 
-interface userSessionType {
-  email: string;
-  domain: string;
-  apiKey: string;
-}
-
 export const Sidebar = () => {
-  const [user, setUser] = useState<userSessionType | null>(null);
   const navigate = useNavigate();
+  const { data: { user } = {} } = useSession();
   const handleLogout = () => {
     try {
       axios.post(
@@ -37,13 +30,6 @@ export const Sidebar = () => {
     navigate({ to: '/' });
   };
 
-  useEffect(() => {
-    (async () => {
-      const userSession = await getUserSession();
-      setUser(userSession);
-    })();
-  }, []);
-
   return (
     <aside className="border-r text-text-200 border-text-200 min-w-48 flex flex-col justify-between pr-16">
       <div className="flex flex-col gap-8">
@@ -58,11 +44,7 @@ export const Sidebar = () => {
         </div>
       </div>
       <nav className="flex flex-col gap-8">
-        <SidebarNavItem
-          icon={ImStatsDots}
-          label="메인 통계"
-          linkUrl="/mainStat"
-        />
+        <SidebarNavItem icon={ImStatsDots} label="메인 통계" linkUrl="/" />
         <SidebarNavItem
           icon={FaDiagramProject}
           label="서브 통계"
