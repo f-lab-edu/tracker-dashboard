@@ -1,5 +1,6 @@
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
 import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
+import { PerPageAverageScrollDepth } from '@/components/stats/PerPageAverageScrollDepth';
 import { UserBounce } from '@/components/stats/UserBounce';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
 import { UserReferrer } from '@/components/stats/UserReferrer';
@@ -25,6 +26,9 @@ export const SubStatPage = () => {
       </WithBoundarySuspense>
       <WithBoundarySuspense>
         <UserReferrer />
+      </WithBoundarySuspense>
+      <WithBoundarySuspense>
+        <PerPageAverageScrollDepth />
       </WithBoundarySuspense>
     </CommonLayout>
   );

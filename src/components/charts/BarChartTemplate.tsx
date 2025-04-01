@@ -8,8 +8,13 @@ import {
   YAxis,
 } from 'recharts';
 
-type SingleBarData = { name: string; count: number };
-type MultiBarData = Record<string, string | number>;
+export interface SingleBarData {
+  name: string;
+  count: number;
+}
+export interface MultiBarData {
+  [key: string]: string | number;
+}
 
 interface BarChartTemplateProps {
   data: SingleBarData[] | MultiBarData[];
