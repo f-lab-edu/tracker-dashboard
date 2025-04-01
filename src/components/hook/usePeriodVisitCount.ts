@@ -26,10 +26,9 @@ export const usePeriodVisitCounts = (startDate: string, endDate: string) => {
         startDate,
         endDate,
       });
-
       const groupedMap = new Map<string, ChartDataType>();
       result.forEach((item: VisitorsPageByPeriodDataType) => {
-        let pathname = new URL(item.url).pathname;
+        let pathname = item.url;
         if (pathname === '/') {
           pathname = '/home';
         }
@@ -43,11 +42,8 @@ export const usePeriodVisitCounts = (startDate: string, endDate: string) => {
       });
       const chartData = Array.from(groupedMap.values());
       const chartKeys = result.map((item: VisitorsPageByPeriodDataType) => {
-        let pathname = new URL(item.url).pathname;
-        if (pathname === '/') {
-          pathname = '/home';
-        }
-        return pathname;
+        let pathname = item.url;
+        return pathname === '/' ? '/home' : pathname;
       });
       return { chartData, chartKeys };
     },
