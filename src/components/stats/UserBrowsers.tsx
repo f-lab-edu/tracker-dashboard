@@ -15,7 +15,7 @@ export const UserBrowsers = () => {
       <Title title="Browser Stats" />
       <BarChartTemplate
         data={browsersData}
-        barColor="#FFD700"
+        barColors={['#FFD700']}
         marginRight={50}
         marginTop={20}
       />

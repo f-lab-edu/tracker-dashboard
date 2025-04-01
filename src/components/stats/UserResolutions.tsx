@@ -17,7 +17,7 @@ export const UserResolutions = () => {
       <Title title="Resolution Stats" />
       <BarChartTemplate
         data={resolutionData}
-        barColor="#FFD700"
+        barColors={['#FFD700']}
         marginRight={50}
         marginTop={20}
       />
