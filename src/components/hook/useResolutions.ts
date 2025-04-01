@@ -1,5 +1,6 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { SingleBarData } from '../charts/BarChartTemplate';
 
 interface ResolutionDataType {
   resolution: string;
@@ -7,8 +8,14 @@ interface ResolutionDataType {
 }
 
 export const useUserResolution = () => {
-  return useSuspenseQuery<ResolutionDataType[]>({
+  return useSuspenseQuery<SingleBarData[]>({
     queryKey: ['resolutionStats'],
-    queryFn: () => fetchData('/dashboard/resolutionStats'),
+    queryFn: async () => {
+      const data = await fetchData('/dashboard/resolutionStats');
+      return data.map((item: ResolutionDataType) => ({
+        name: item.resolution,
+        count: item.count,
+      }));
+    },
   });
 };

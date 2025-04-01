@@ -5,17 +5,11 @@ import { useUserLanguages } from '../hook/useUserLanguages';
 
 export const UserLanguages = () => {
   const { data } = useUserLanguages();
-  const languageData = data.map(
-    (item: { language: string; count: number }) => ({
-      name: item.language,
-      value: item.count,
-    })
-  );
 
   return (
     <Card width="fit">
       <Title title="Language Stats" />
-      <PieChartTemplate data={languageData} colors={['#FFD700', '#917800']} />
+      <PieChartTemplate data={data} colors={['#FFD700', '#917800']} />
     </Card>
   );
 };

@@ -1,5 +1,6 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { PieChartDataType } from '../charts/PieChartTemplate';
 
 interface UserLanguagesDataType {
   language: string;
@@ -7,8 +8,14 @@ interface UserLanguagesDataType {
 }
 
 export const useUserLanguages = () => {
-  return useSuspenseQuery<UserLanguagesDataType[]>({
+  return useSuspenseQuery<PieChartDataType[]>({
     queryKey: ['userLanguage'],
-    queryFn: () => fetchData('/dashboard/languageStats'),
+    queryFn: async () => {
+      const data = await fetchData('/dashboard/languageStats');
+      return data.map((item: UserLanguagesDataType) => ({
+        name: item.language,
+        value: item.count,
+      }));
+    },
   });
 };

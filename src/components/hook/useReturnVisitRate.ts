@@ -1,14 +1,12 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-interface ReturnVisitRateDataType {
-  domain: string;
-  visitedUsersRate: number;
-}
-
 export const useReturnVisitRate = () => {
-  return useSuspenseQuery<ReturnVisitRateDataType>({
+  return useSuspenseQuery<number>({
     queryKey: ['returnVisitRate'],
-    queryFn: () => fetchData('/dashboard/visitedRate'),
+    queryFn: async () => {
+      const data = await fetchData('/dashboard/visitedRate');
+      return Math.round(data.visitedUsersRate);
+    },
   });
 };

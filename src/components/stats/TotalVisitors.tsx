@@ -3,8 +3,7 @@ import { useTotalVisitors } from '../hook/useTotalVisitors';
 
 export const TotalVisitors = () => {
   const { data } = useTotalVisitors();
-  const { totalVisitCount, uniqueVisitors } = data[0];
-
+  const { totalVisitCount, uniqueVisitors } = data;
   return (
     <Card bgColor="bg-primary-100" borderRadius="xl" width="fit">
       <div className="flex gap-4 text-accent-200">

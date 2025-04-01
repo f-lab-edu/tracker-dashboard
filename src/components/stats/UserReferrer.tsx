@@ -5,6 +5,7 @@ import { useUserReferrer } from '../hook/useUserReferrer';
 
 export const UserReferrer = () => {
   const { data } = useUserReferrer();
+
   return (
     <Card width="fit">
       <Title title="Referrer Stats" />
