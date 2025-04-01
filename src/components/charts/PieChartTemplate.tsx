@@ -1,6 +1,6 @@
 import { Cell, Legend, Pie, PieChart } from 'recharts';
 
-interface PieChartDataType {
+export interface PieChartDataType {
   name: string;
   value: number;
 }
