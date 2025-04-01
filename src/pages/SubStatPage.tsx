@@ -3,6 +3,7 @@ import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
 import { UserBounce } from '@/components/stats/UserBounce';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
 import { VisitorsPageByPeriodCount } from '@/components/stats/VisitorsPageByPeriodCount';
+import { VisitorsPeriodCount } from '@/components/stats/VisitorsPeriodCount';
 
 export const SubStatPage = () => {
   return (
@@ -17,6 +18,9 @@ export const SubStatPage = () => {
       </div>
       <WithBoundarySuspense>
         <VisitorsPageByPeriodCount />
+      </WithBoundarySuspense>
+      <WithBoundarySuspense>
+        <VisitorsPeriodCount />
       </WithBoundarySuspense>
     </CommonLayout>
   );
