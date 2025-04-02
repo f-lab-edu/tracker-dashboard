@@ -21,7 +21,7 @@ export const useVisitorsPeriodCount = (startDate: string, endDate: string) => {
   return useSuspenseQuery<UserPeriodVisitCountType>({
     queryKey: ['periodVisitorsCount'],
     queryFn: async () => {
-      const result: PeriodVisitCountType[] = await fetchData(
+      const result = await fetchData<PeriodVisitCountType[]>(
         '/dashboard/visitorsByPeriodCount',
         {
           startDate,

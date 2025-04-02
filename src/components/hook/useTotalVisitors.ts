@@ -10,7 +10,9 @@ export const useTotalVisitors = () => {
   return useSuspenseQuery<TotalVisitorsDataType>({
     queryKey: ['totalVisitors'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/totalVisitorsCount');
+      const data = await fetchData<TotalVisitorsDataType[]>(
+        '/dashboard/totalVisitorsCount'
+      );
       return data[0];
     },
   });

@@ -11,8 +11,10 @@ export const useUserResolution = () => {
   return useSuspenseQuery<SingleBarData[]>({
     queryKey: ['resolutionStats'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/resolutionStats');
-      return data.map((item: ResolutionDataType) => ({
+      const data = await fetchData<ResolutionDataType[]>(
+        '/dashboard/resolutionStats'
+      );
+      return data.map((item) => ({
         name: item.resolution,
         count: item.count,
       }));

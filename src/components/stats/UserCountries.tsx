@@ -1,10 +1,10 @@
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useUserCounties } from '../hook/useUserCountries';
+import { useUserCountries } from '../hook/useUserCountries';
 
 export const UserCountries = () => {
-  const { data } = useUserCounties();
+  const { data } = useUserCountries();
 
   return (
     <Card width="fit">

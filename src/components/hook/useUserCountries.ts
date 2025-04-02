@@ -11,8 +11,10 @@ export const useUserCounties = () => {
   return useSuspenseQuery<PieChartDataType[]>({
     queryKey: ['userCountries'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/countryStats');
-      return data.map((item: UserCountriesDataType) => ({
+      const data = await fetchData<UserCountriesDataType[]>(
+        '/dashboard/countryStats'
+      );
+      return data.map((item) => ({
         name: item.country,
         value: item.count,
       }));

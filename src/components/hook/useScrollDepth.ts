@@ -11,8 +11,10 @@ export const useScrollDepth = () => {
   return useSuspenseQuery({
     queryKey: ['userScrollDepth'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/perPageAverageScrollDepth');
-      const chartData: SingleBarData[] = data.map((item: userScrollDepth) => {
+      const data = await fetchData<userScrollDepth[]>(
+        '/dashboard/perPageAverageScrollDepth'
+      );
+      const chartData: SingleBarData[] = data.map((item) => {
         const pathname = new URL(item.url).pathname;
         return {
           name: pathname === '/' ? '/home' : pathname,

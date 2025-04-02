@@ -11,8 +11,10 @@ export const useUserBrowsers = () => {
   return useSuspenseQuery<SingleBarData[]>({
     queryKey: ['userBrowsers'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/browsersStats');
-      return data.map((item: UserBrowsersDataType) => ({
+      const data = await fetchData<UserBrowsersDataType[]>(
+        '/dashboard/browsersStats'
+      );
+      return data.map((item) => ({
         name: item.browser,
         count: item.count,
       }));

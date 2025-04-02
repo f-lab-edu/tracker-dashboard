@@ -11,13 +11,13 @@ export const useUserReferrer = () => {
   return useSuspenseQuery<PieChartDataType[]>({
     queryKey: ['userReferrer'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/referrer');
-      const chartData: PieChartDataType[] = data.map(
-        (item: UserReferrerDataType) => ({
-          name: item.path === '' ? 'direct' : item.path,
-          value: item.count,
-        })
+      const data = await fetchData<UserReferrerDataType[]>(
+        '/dashboard/referrer'
       );
+      const chartData: PieChartDataType[] = data.map((item) => ({
+        name: item.path === '' ? 'direct' : item.path,
+        value: item.count,
+      }));
       return chartData;
     },
   });

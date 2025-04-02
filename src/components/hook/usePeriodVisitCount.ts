@@ -22,12 +22,15 @@ export const usePeriodVisitCounts = (startDate: string, endDate: string) => {
   return useSuspenseQuery<UsePeriodVisitCountsType>({
     queryKey: ['periodVisitCounts', startDate, endDate],
     queryFn: async () => {
-      const result = await fetchData(`/dashboard/visitorsPageByPeriodCount`, {
-        startDate,
-        endDate,
-      });
+      const result = await fetchData<VisitorsPageByPeriodDataType[]>(
+        `/dashboard/visitorsPageByPeriodCount`,
+        {
+          startDate,
+          endDate,
+        }
+      );
       const groupedMap = new Map<string, ChartDataType>();
-      result.forEach((item: VisitorsPageByPeriodDataType) => {
+      result.forEach((item) => {
         let pathname = item.url;
         if (pathname === '/') {
           pathname = '/home';

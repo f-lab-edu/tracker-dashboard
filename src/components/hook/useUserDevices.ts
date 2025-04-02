@@ -11,8 +11,10 @@ export const useUserDevices = () => {
   return useSuspenseQuery<PieChartDataType[]>({
     queryKey: ['userDevice'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/deviceStats');
-      return data.map((item: UserDevicesDataType) => ({
+      const data = await fetchData<UserDevicesDataType[]>(
+        '/dashboard/deviceStats'
+      );
+      return data.map((item) => ({
         name: item.isMobile === 1 ? 'Mobile' : 'Desktop',
         value: item.count,
       }));

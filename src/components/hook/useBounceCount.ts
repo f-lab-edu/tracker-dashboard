@@ -19,7 +19,7 @@ export const useBounceCount = () => {
   return useSuspenseQuery<BounceCountsType[]>({
     queryKey: ['bounceCount'],
     queryFn: async () => {
-      const data: BounceRawDataType[] = await fetchData(
+      const data = await fetchData<BounceRawDataType[]>(
         '/dashboard/bounceRate'
       );
       const formattedBounceData = data.reduce<FormattedType>((acc, cur) => {

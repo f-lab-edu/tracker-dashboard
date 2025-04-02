@@ -1,10 +1,10 @@
 import { API_BASE_URL } from '@/config/api';
 import axios from 'axios';
 
-export const fetchData = async (
+export const fetchData = async <T>(
   url: string,
   params?: Record<string, string>
-) => {
+): Promise<T> => {
   const res = await axios.get(`${API_BASE_URL}${url}`, {
     withCredentials: true,
     params,

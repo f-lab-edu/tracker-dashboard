@@ -11,8 +11,10 @@ export const useUserLanguages = () => {
   return useSuspenseQuery<PieChartDataType[]>({
     queryKey: ['userLanguage'],
     queryFn: async () => {
-      const data = await fetchData('/dashboard/languageStats');
-      return data.map((item: UserLanguagesDataType) => ({
+      const data = await fetchData<UserLanguagesDataType[]>(
+        '/dashboard/languageStats'
+      );
+      return data.map((item) => ({
         name: item.language,
         value: item.count,
       }));
