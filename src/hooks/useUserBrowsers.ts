@@ -1,23 +1,10 @@
+import { BrowserDataType } from '@/types/browser';
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { SingleBarData } from '../components/charts/BarChartTemplate';
-
-export interface UserBrowsersDataType {
-  browser: string;
-  count: number;
-}
 
 export const useUserBrowsers = () => {
-  return useSuspenseQuery<SingleBarData[]>({
+  return useSuspenseQuery({
     queryKey: ['userBrowsers'],
-    queryFn: async () => {
-      const data = await fetchData<UserBrowsersDataType[]>(
-        '/dashboard/browsersStats'
-      );
-      return data.map((item) => ({
-        name: item.browser,
-        count: item.count,
-      }));
-    },
+    queryFn: () => fetchData<BrowserDataType[]>('/dashboard/browsersStats'),
   });
 };

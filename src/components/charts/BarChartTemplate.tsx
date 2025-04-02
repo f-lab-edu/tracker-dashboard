@@ -1,3 +1,4 @@
+import { MultiBarDataType, SingleBarDataType } from '@/types/chart';
 import {
   Bar,
   BarChart,
@@ -8,16 +9,8 @@ import {
   YAxis,
 } from 'recharts';
 
-export interface SingleBarData {
-  name: string;
-  count: number;
-}
-export interface MultiBarData {
-  [key: string]: string | number;
-}
-
 interface BarChartTemplateProps {
-  data: SingleBarData[] | MultiBarData[];
+  data: SingleBarDataType[] | MultiBarDataType[];
   barKeys?: string[];
   barColors: string[];
   marginRight?: number;
