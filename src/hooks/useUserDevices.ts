@@ -1,23 +1,10 @@
+import { DeviceDataType } from '@/types/device';
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PieChartDataType } from '../components/charts/PieChartTemplate';
-
-interface UserDevicesDataType {
-  isMobile: number;
-  count: number;
-}
 
 export const useUserDevices = () => {
-  return useSuspenseQuery<PieChartDataType[]>({
+  return useSuspenseQuery({
     queryKey: ['userDevice'],
-    queryFn: async () => {
-      const data = await fetchData<UserDevicesDataType[]>(
-        '/dashboard/deviceStats'
-      );
-      return data.map((item) => ({
-        name: item.isMobile === 1 ? 'Mobile' : 'Desktop',
-        value: item.count,
-      }));
-    },
+    queryFn: () => fetchData<DeviceDataType[]>('/dashboard/deviceStats'),
   });
 };

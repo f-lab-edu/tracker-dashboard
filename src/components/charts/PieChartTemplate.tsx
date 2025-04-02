@@ -1,9 +1,6 @@
+import { PieChartDataType } from '@/types/chart';
 import { Cell, Legend, Pie, PieChart } from 'recharts';
 
-export interface PieChartDataType {
-  name: string;
-  value: number;
-}
 interface PieChartTemplateProps {
   colors: string[];
   data: PieChartDataType[];
