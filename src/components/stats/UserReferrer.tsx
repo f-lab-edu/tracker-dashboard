@@ -1,7 +1,7 @@
+import { useUserReferrer } from '@/hooks/useUserReferrer';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useUserReferrer } from '../hook/useUserReferrer';
 
 export const UserReferrer = () => {
   const { data } = useUserReferrer();

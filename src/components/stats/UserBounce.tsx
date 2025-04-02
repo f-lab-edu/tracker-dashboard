@@ -1,7 +1,7 @@
+import { useBounceCount } from '@/hooks/useBounceCount';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useBounceCount } from '../hook/useBounceCount';
 
 export const UserBounce = () => {
   const { data } = useBounceCount();

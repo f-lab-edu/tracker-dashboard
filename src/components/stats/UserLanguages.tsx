@@ -1,7 +1,7 @@
+import { useUserLanguages } from '@/hooks/useUserLanguages';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useUserLanguages } from '../hook/useUserLanguages';
 
 export const UserLanguages = () => {
   const { data } = useUserLanguages();

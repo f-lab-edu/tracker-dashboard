@@ -1,6 +1,6 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { PieChartDataType } from '../charts/PieChartTemplate';
+import { PieChartDataType } from '../components/charts/PieChartTemplate';
 
 interface UserReferrerDataType {
   path: string;

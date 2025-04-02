@@ -1,9 +1,9 @@
+import { usePeriodVisitCounts } from '@/hooks/usePeriodVisitCount';
 import { useState } from 'react';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { DateRangePicker } from '../common/DateRangePicker';
 import { Title } from '../common/Title';
-import { usePeriodVisitCounts } from '../hook/usePeriodVisitCount';
 
 export const VisitorsPageByPeriodCount = () => {
   const today = new Date();

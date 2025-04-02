@@ -1,7 +1,7 @@
+import { useUserResolution } from '@/hooks/useResolutions';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useUserResolution } from '../hook/useResolutions';
 
 export const UserResolutions = () => {
   const { data } = useUserResolution();

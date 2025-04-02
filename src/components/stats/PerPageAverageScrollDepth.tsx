@@ -1,7 +1,7 @@
+import { useScrollDepth } from '@/hooks/useScrollDepth';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useScrollDepth } from '../hook/useScrollDepth';
 
 export const PerPageAverageScrollDepth = () => {
   const { data } = useScrollDepth();

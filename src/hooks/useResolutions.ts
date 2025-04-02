@@ -1,6 +1,6 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { SingleBarData } from '../charts/BarChartTemplate';
+import { SingleBarData } from '../components/charts/BarChartTemplate';
 
 interface ResolutionDataType {
   resolution: string;

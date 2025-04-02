@@ -1,7 +1,7 @@
+import { useUserDevices } from '@/hooks/useUserDevices';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
-import { useUserDevices } from '../hook/useUserDevices';
 
 export const UserDevices = () => {
   const { data } = useUserDevices();

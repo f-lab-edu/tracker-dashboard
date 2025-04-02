@@ -1,6 +1,6 @@
+import { useReturnVisitRate } from '@/hooks/useReturnVisitRate';
 import { FiActivity } from 'react-icons/fi';
 import { Card } from '../common/Card';
-import { useReturnVisitRate } from '../hook/useReturnVisitRate';
 
 export const ReturnVisitRate = () => {
   const { data } = useReturnVisitRate();
