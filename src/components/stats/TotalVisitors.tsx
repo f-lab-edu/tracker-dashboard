@@ -3,7 +3,8 @@ import { Card } from '../common/Card';
 
 export const TotalVisitors = () => {
   const { data } = useTotalVisitors();
-  const { totalVisitCount, uniqueVisitors } = data;
+  const { totalVisitCount, uniqueVisitors } = data[0];
+
   return (
     <Card bgColor="bg-primary-100" borderRadius="xl" width="fit">
       <div className="flex gap-4 text-accent-200">

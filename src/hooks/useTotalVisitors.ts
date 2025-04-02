@@ -7,13 +7,9 @@ export interface TotalVisitorsDataType {
 }
 
 export const useTotalVisitors = () => {
-  return useSuspenseQuery<TotalVisitorsDataType>({
+  return useSuspenseQuery({
     queryKey: ['totalVisitors'],
-    queryFn: async () => {
-      const data = await fetchData<TotalVisitorsDataType[]>(
-        '/dashboard/totalVisitorsCount'
-      );
-      return data[0];
-    },
+    queryFn: () =>
+      fetchData<TotalVisitorsDataType[]>('/dashboard/totalVisitorsCount'),
   });
 };

@@ -7,13 +7,8 @@ interface ReturnVisitRateType {
 }
 
 export const useReturnVisitRate = () => {
-  return useSuspenseQuery<number>({
+  return useSuspenseQuery({
     queryKey: ['returnVisitRate'],
-    queryFn: async () => {
-      const data = await fetchData<ReturnVisitRateType>(
-        '/dashboard/visitedRate'
-      );
-      return Math.round(data.visitedUsersRate);
-    },
+    queryFn: () => fetchData<ReturnVisitRateType>('/dashboard/visitedRate'),
   });
 };

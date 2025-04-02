@@ -9,7 +9,7 @@ const REFRESH_INTERVAL_MS = 10 * 1000;
 const STALE_TIME_IMMEDIATE = 0;
 
 export const useOnlineUser = () => {
-  return useSuspenseQuery<OnlineUsersDataType>({
+  return useSuspenseQuery({
     queryKey: ['onlineUser'],
     queryFn: () =>
       fetchData<OnlineUsersDataType>('/dashboard/onlineUsersCount'),

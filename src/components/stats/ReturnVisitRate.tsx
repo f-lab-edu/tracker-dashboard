@@ -4,6 +4,7 @@ import { Card } from '../common/Card';
 
 export const ReturnVisitRate = () => {
   const { data } = useReturnVisitRate();
+  const returnData = Math.round(data.visitedUsersRate);
 
   return (
     <Card borderRadius="xl" width="fit">
@@ -11,7 +12,7 @@ export const ReturnVisitRate = () => {
         <p className="text-lg font-bold">Return Visit Rate</p>
         <div className="flex gap-4 items-center justify-center mt-4">
           <FiActivity size={30} />
-          <p className="text-center text-3xl">{data}%</p>
+          <p className="text-center text-3xl">{returnData}%</p>
         </div>
       </div>
     </Card>
