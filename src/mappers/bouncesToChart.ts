@@ -9,7 +9,7 @@ export function bouncesToChart(data: BounceRawDataType[]) {
   const BounceChartData = Object.entries(
     formattedBounceData
   ).map<SingleBarDataType>(([url, count]) => ({
-    name: url === '/' ? '/home' : url,
+    name: url,
     count: count,
   }));
   return BounceChartData;
