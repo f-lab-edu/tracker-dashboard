@@ -1,7 +1,7 @@
 import { fetchData } from '@/utils/api';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-export interface TotalVisitorsDataType {
+interface TotalVisitorsDataType {
   totalVisitCount: string;
   uniqueVisitors: number;
 }
