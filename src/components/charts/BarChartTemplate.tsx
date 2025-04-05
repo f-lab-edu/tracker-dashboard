@@ -35,7 +35,6 @@ export const BarChartTemplate = ({
       <XAxis dataKey="name" tick={{ fill: '#b4a5a5' }} />
       <YAxis tick={{ fill: '#dcdcdc' }} />
       <Tooltip />
-      <Legend />
       {barKeys ? (
         barKeys.map((key, idx) => (
           <Bar
