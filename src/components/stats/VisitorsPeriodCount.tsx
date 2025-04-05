@@ -1,6 +1,6 @@
 import { useVisitorsPeriodCount } from '@/hooks/useVisitorsPeriodCount';
 import { visitorPeriodCountToChart } from '@/mappers/visitorsPeriodCountToChart';
-import { formatDateToSv, getDefaultDateRange } from '@/utils/date';
+import { formatDateToKr, getDefaultDateRange } from '@/utils/date';
 import { useState } from 'react';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
@@ -13,15 +13,15 @@ export const VisitorsPeriodCount = () => {
   );
   const [startDate, endDate] = selectedRange;
   const { data } = useVisitorsPeriodCount(
-    formatDateToSv(startDate),
-    formatDateToSv(endDate)
+    formatDateToKr(startDate),
+    formatDateToKr(endDate)
   );
   const visitorsData = visitorPeriodCountToChart(data);
 
   return (
     <Card>
       <Title title="VisitorsPeriodCount Stats" />
-      <DateRangePicker rangeSelect={setSelectedRange} />
+      <DateRangePicker onRangeChange={setSelectedRange} />
       <BarChartTemplate
         data={visitorsData.chartData}
         barKeys={visitorsData.chartKeys}

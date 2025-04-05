@@ -5,10 +5,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import '../../datePicker.css';
 interface CustomDatePickerProps {
-  rangeSelect: (range: [Date, Date]) => void;
+  onRangeChange: (range: [Date, Date]) => void;
 }
 
-export const DateRangePicker = ({ rangeSelect }: CustomDatePickerProps) => {
+export const DateRangePicker = ({ onRangeChange }: CustomDatePickerProps) => {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>(
     getDefaultDateRange()
   );
@@ -17,7 +17,7 @@ export const DateRangePicker = ({ rangeSelect }: CustomDatePickerProps) => {
     setDateRange(dates);
     const [startDate, endDate] = dates;
     if (startDate && endDate) {
-      rangeSelect([startDate, endDate]);
+      onRangeChange([startDate, endDate]);
     }
   };
 

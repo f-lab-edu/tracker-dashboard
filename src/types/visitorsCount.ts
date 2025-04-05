@@ -1,5 +1,5 @@
 export interface PeriodVisitCountType {
-  date: string;
+  visitDate: string;
   totalVisitCount: number;
   uniqueVisitors: number;
 }
