@@ -1,6 +1,6 @@
+import { useOnlineUser } from '@/hooks/useOnlineUsers';
 import { MdOnlinePrediction } from 'react-icons/md';
 import { Card } from '../common/Card';
-import { useOnlineUser } from '../hook/useOnlineUsers';
 
 export const OnlineUsers = () => {
   const { data } = useOnlineUser();

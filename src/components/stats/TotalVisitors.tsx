@@ -1,5 +1,5 @@
+import { useTotalVisitors } from '@/hooks/useTotalVisitors';
 import { Card } from '../common/Card';
-import { useTotalVisitors } from '../hook/useTotalVisitors';
 
 export const TotalVisitors = () => {
   const { data } = useTotalVisitors();

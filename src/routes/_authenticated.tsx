@@ -1,6 +1,5 @@
+import { useSession } from '@/hooks/useSession';
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
-
-import { useSession } from '@/components/hook/useSession';
 
 const Authenticated = () => {
   const { data } = useSession();

@@ -1,19 +1,19 @@
 import { CHART_COLORS } from '@/constants/colors';
-import { useUserResolution } from '@/hooks/useResolutions';
-import { resolutionToChart } from '@/mappers/resolutionsToChart';
+import { useUserBrowsers } from '@/hooks/useUserBrowsers';
+import { browserToChart } from '@/mappers/browserToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
 
-export const UserResolutions = () => {
-  const { data } = useUserResolution();
-  const resolutionData = resolutionToChart(data);
+export const UserBrowsers = () => {
+  const { data } = useUserBrowsers();
+  const browserData = browserToChart(data);
 
   return (
     <Card width="fit">
-      <Title title="Resolution Stats" />
+      <Title title="Browser Stats" />
       <BarChartTemplate
-        data={resolutionData}
+        data={browserData}
         barColors={CHART_COLORS}
         marginRight={50}
         marginTop={20}

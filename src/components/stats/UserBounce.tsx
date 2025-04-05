@@ -1,19 +1,19 @@
 import { CHART_COLORS } from '@/constants/colors';
-import { useUserResolution } from '@/hooks/useResolutions';
-import { resolutionToChart } from '@/mappers/resolutionsToChart';
+import { useBounceCount } from '@/hooks/useBounceCount';
+import { bouncesToChart } from '@/mappers/bouncesToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { Title } from '../common/Title';
 
-export const UserResolutions = () => {
-  const { data } = useUserResolution();
-  const resolutionData = resolutionToChart(data);
+export const UserBounce = () => {
+  const { data } = useBounceCount();
+  const bounceData = bouncesToChart(data);
 
   return (
     <Card width="fit">
-      <Title title="Resolution Stats" />
+      <Title title="Bounced Count Stats" />
       <BarChartTemplate
-        data={resolutionData}
+        data={bounceData}
         barColors={CHART_COLORS}
         marginRight={50}
         marginTop={20}
