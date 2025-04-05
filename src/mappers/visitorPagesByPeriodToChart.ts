@@ -1,25 +1,21 @@
-import { MultiBarDataType } from '@/types/chart';
 import { VisitorsPageByPeriodDataType } from '@/types/visitorsPage';
 
 export function visitorPageByPeriodToChart(
   data: VisitorsPageByPeriodDataType[]
 ) {
-  const groupedMap = new Map<string, MultiBarDataType>();
-  data.forEach((item) => {
-    let pathname = item.url;
+  const chartData: { name: string; [key: string]: number | string }[] = [];
+  const chartKeys = Array.from(new Set(data.map((item) => item.url)));
 
-    const key = item.date;
-    if (!groupedMap.has(key)) {
-      groupedMap.set(key, { name: key });
+  data.forEach((item) => {
+    const dataObject = chartData.find((entry) => entry.name === item.date);
+    if (dataObject) {
+      dataObject[item.url] = Number(item.visitCount);
+    } else {
+      chartData.push({
+        name: item.date,
+        [item.url]: Number(item.visitCount),
+      });
     }
-    const current = groupedMap.get(key)!;
-    current[pathname] = Number(item.visitCount);
-    current[`${pathname}_unique`] = item.uniqueVisitors;
-  });
-  const chartData = Array.from(groupedMap.values());
-  const chartKeys = data.map((item: VisitorsPageByPeriodDataType) => {
-    let pathname = item.url;
-    return pathname;
   });
   return { chartData, chartKeys };
 }
