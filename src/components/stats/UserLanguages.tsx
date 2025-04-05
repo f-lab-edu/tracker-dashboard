@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserLanguages } from '@/hooks/useUserLanguages';
 import { languagesToChart } from '@/mappers/languagesToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
@@ -11,7 +12,7 @@ export const UserLanguages = () => {
   return (
     <Card width="fit">
       <Title title="Language Stats" />
-      <PieChartTemplate data={languagesData} colors={['#FFD700', '#917800']} />
+      <PieChartTemplate data={languagesData} colors={CHART_COLORS} />
     </Card>
   );
 };

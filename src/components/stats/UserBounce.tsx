@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useBounceCount } from '@/hooks/useBounceCount';
 import { bouncesToChart } from '@/mappers/bouncesToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
@@ -13,7 +14,7 @@ export const UserBounce = () => {
       <Title title="Bounced Count Stats" />
       <BarChartTemplate
         data={bounceData}
-        barColors={['#FFD700']}
+        barColors={CHART_COLORS}
         marginRight={50}
         marginTop={20}
       />

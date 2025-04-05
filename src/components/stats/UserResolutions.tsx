@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserResolution } from '@/hooks/useResolutions';
 import { resolutionToChart } from '@/mappers/resolutionsToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
@@ -13,7 +14,7 @@ export const UserResolutions = () => {
       <Title title="Resolution Stats" />
       <BarChartTemplate
         data={resolutionData}
-        barColors={['#FFD700']}
+        barColors={CHART_COLORS}
         marginRight={50}
         marginTop={20}
       />

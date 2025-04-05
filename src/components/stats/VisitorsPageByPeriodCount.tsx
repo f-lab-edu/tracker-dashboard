@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { usePeriodVisitCounts } from '@/hooks/usePeriodVisitCount';
 import { visitorPageByPeriodToChart } from '@/mappers/visitorPagesByPeriodToChart';
 import { formatDateToKr, getDefaultDateRange } from '@/utils/date';
@@ -25,7 +26,7 @@ export const VisitorsPageByPeriodCount = () => {
       <BarChartTemplate
         data={visitorData.chartData}
         barKeys={visitorData.chartKeys}
-        barColors={['#FFD700', '#917800']}
+        barColors={CHART_COLORS}
       />
     </Card>
   );

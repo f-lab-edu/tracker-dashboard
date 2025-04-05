@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserReferrer } from '@/hooks/useUserReferrer';
 import { referrersToChart } from '@/mappers/referrersToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
@@ -11,7 +12,7 @@ export const UserReferrer = () => {
   return (
     <Card width="fit">
       <Title title="Referrer Stats" />
-      <PieChartTemplate data={referrersData} colors={['#FFD700', '#917800']} />
+      <PieChartTemplate data={referrersData} colors={CHART_COLORS} />
     </Card>
   );
 };

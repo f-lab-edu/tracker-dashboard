@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserCountries } from '@/hooks/useUserCountries';
 import { countriesToChart } from '@/mappers/countriesToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
@@ -11,7 +12,7 @@ export const UserCountries = () => {
   return (
     <Card width="fit">
       <Title title="Country Stats" />
-      <PieChartTemplate data={countriesData} colors={['#FFD700', '#917800']} />
+      <PieChartTemplate data={countriesData} colors={CHART_COLORS} />
     </Card>
   );
 };

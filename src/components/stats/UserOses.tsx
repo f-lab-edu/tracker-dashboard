@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserOses } from '@/hooks/useUserOses';
 import { osesToChart } from '@/mappers/osesToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
@@ -11,7 +12,7 @@ export const UserOses = () => {
   return (
     <Card width="fit">
       <Title title="Os Stats" />
-      <PieChartTemplate data={osData} colors={['#FFD700', '#917800']} />
+      <PieChartTemplate data={osData} colors={CHART_COLORS} />
     </Card>
   );
 };

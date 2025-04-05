@@ -1,3 +1,4 @@
+import { CHART_COLORS } from '@/constants/colors';
 import { useUserBrowsers } from '@/hooks/useUserBrowsers';
 import { browserToChart } from '@/mappers/browserToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
@@ -13,7 +14,7 @@ export const UserBrowsers = () => {
       <Title title="Browser Stats" />
       <BarChartTemplate
         data={browserData}
-        barColors={['#FFD700']}
+        barColors={CHART_COLORS}
         marginRight={50}
         marginTop={20}
       />
