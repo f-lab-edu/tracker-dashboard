@@ -3,6 +3,7 @@ import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
 import { PerPageAverageScrollDepth } from '@/components/stats/PerPageAverageScrollDepth';
 import { UserBounce } from '@/components/stats/UserBounce';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
+import { UserOses } from '@/components/stats/UserOses';
 import { UserReferrer } from '@/components/stats/UserReferrer';
 import { VisitorsPageByPeriodCount } from '@/components/stats/VisitorsPageByPeriodCount';
 import { VisitorsPeriodCount } from '@/components/stats/VisitorsPeriodCount';
@@ -26,6 +27,9 @@ export const SubStatPage = () => {
       </WithBoundarySuspense>
       <WithBoundarySuspense>
         <UserReferrer />
+      </WithBoundarySuspense>
+      <WithBoundarySuspense>
+        <UserOses />
       </WithBoundarySuspense>
       <WithBoundarySuspense>
         <PerPageAverageScrollDepth />
