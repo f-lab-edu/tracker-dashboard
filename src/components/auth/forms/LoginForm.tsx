@@ -1,9 +1,8 @@
 import { API_BASE_URL } from '@/config/api';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
-import { Path, SubmitHandler, useForm } from 'react-hook-form';
-import { AuthButton } from '../AuthButton';
-import { AuthInputValid } from '../AuthInputValid';
+import { SubmitHandler } from 'react-hook-form';
+import { FormTemplate } from './FormTemplate';
 
 interface LoginFormType {
   email: string;
@@ -11,11 +10,6 @@ interface LoginFormType {
 }
 
 export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormType>();
   const navigate = useNavigate();
   const handleLoginSubmit: SubmitHandler<LoginFormType> = async (data) => {
     try {
@@ -61,37 +55,12 @@ export const LoginForm = () => {
   ];
 
   return (
-    <div className="flex-1">
-      <form onSubmit={handleSubmit(handleLoginSubmit)} className="h-full">
-        <div className="flex flex-col justify-between h-full">
-          <h2 className="text-2xl font-bold text-center"> Login</h2>
-          {loginValidationInputs.map(
-            ({ label, name, placeholder, validation, inputType }) => (
-              <AuthInputValid
-                key={name}
-                label={label}
-                name={name as Path<LoginFormType>}
-                placeholder={placeholder}
-                validation={validation}
-                register={register}
-                errors={errors}
-                inputType={inputType}
-              />
-            )
-          )}
-          <AuthButton
-            label="Login"
-            buttonType="submit"
-            buttonClassName="w-full bg-blue-500 "
-          />
-          <AuthButton
-            label="Enroll"
-            buttonType="button"
-            onclick={moveToEnroll}
-            buttonClassName="w-full"
-          />
-        </div>
-      </form>
-    </div>
+    <FormTemplate<LoginFormType>
+      title="LOGIN"
+      inputs={loginValidationInputs}
+      onSubmit={handleLoginSubmit}
+      submitLabel="로그인"
+      extraButton={{ label: '회원가입', onClick: moveToEnroll }}
+    />
   );
 };

@@ -1,10 +1,8 @@
 import { API_BASE_URL } from '@/config/api';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
-import { Path, useForm } from 'react-hook-form';
-import { AuthButton } from '../AuthButton';
-import { AuthInputValid } from '../AuthInputValid';
-
+import { UseFormGetValues } from 'react-hook-form';
+import { FormTemplate } from './FormTemplate';
 interface EnrollFormType {
   email: string;
   password: string;
@@ -13,12 +11,6 @@ interface EnrollFormType {
 }
 
 export const EnrollForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    getValues,
-  } = useForm<EnrollFormType>();
   const navigate = useNavigate();
   const handleEnrollSubmit = async (data: EnrollFormType) => {
     try {
@@ -60,7 +52,7 @@ export const EnrollForm = () => {
       name: 'password',
       placeholder: '비밀번호를 입력해주세요',
       inputType: 'password',
-      validation: {
+      validation: (getValues: UseFormGetValues<EnrollFormType>) => ({
         required: { value: true, message: '비밀번호는 필수입니다' },
         minLength: {
           value: 8,
@@ -71,9 +63,10 @@ export const EnrollForm = () => {
             if (getValues('password') !== val) {
               return '비밀번호가 일치하지 않습니다';
             }
+            return true;
           },
         },
-      },
+      }),
     },
     {
       label: 'Domain',
@@ -91,31 +84,11 @@ export const EnrollForm = () => {
   ];
 
   return (
-    <div className="flex-1">
-      <form onSubmit={handleSubmit(handleEnrollSubmit)} className="h-full">
-        <div className="flex flex-col justify-between h-full">
-          <h2 className="text-2xl font-bold text-center"> Enroll</h2>
-          {enrollValidationInputs.map(
-            ({ label, name, placeholder, validation, inputType }) => (
-              <AuthInputValid
-                key={name}
-                label={label}
-                name={name as Path<EnrollFormType>}
-                placeholder={placeholder}
-                validation={validation}
-                register={register}
-                errors={errors}
-                inputType={inputType}
-              />
-            )
-          )}
-          <AuthButton
-            label="Enroll"
-            buttonType="submit"
-            buttonClassName="bg-blue-500 w-full"
-          />
-        </div>
-      </form>
-    </div>
+    <FormTemplate<EnrollFormType>
+      title="LOGIN"
+      inputs={enrollValidationInputs}
+      onSubmit={handleEnrollSubmit}
+      submitLabel="회원가입"
+    />
   );
 };
