@@ -4,7 +4,7 @@ import { ReferrerDataType } from '@/types/referrer';
 export function referrersToChart(data: ReferrerDataType[]) {
   const referrersData: PieChartDataType[] = data.map((item) => ({
     name: item.path === '' ? 'direct' : item.path,
-    value: item.count,
+    value: Number(item.count),
   }));
   return referrersData;
 }

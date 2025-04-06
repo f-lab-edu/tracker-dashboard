@@ -8,14 +8,14 @@ import { Title } from '../common/Title';
 export const PerPageAverageScrollDepth = () => {
   const { data } = useScrollDepth();
   const scrollDepthData = scrollToChart(data);
-
+  console.log(scrollDepthData);
   return (
     <Card>
       <Title title="Average ScrollDepth" />
-      {data ? (
+      {scrollDepthData?.length ? (
         <BarChartTemplate data={scrollDepthData} barColors={CHART_COLORS} />
       ) : (
-        <p>스크롤이 없는 사이트입니다</p>
+          <p className="mt-4 text-primary-100">스크롤이 없는 사이트입니다</p>
       )}
     </Card>
   );
