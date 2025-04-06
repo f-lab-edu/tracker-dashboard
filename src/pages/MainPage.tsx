@@ -7,7 +7,6 @@ import { TotalVisitors } from '@/components/stats/TotalVisitors';
 import { UserCountries } from '@/components/stats/UserCountries';
 import { UserDevices } from '@/components/stats/UserDevices';
 import { UserLanguages } from '@/components/stats/UserLanguages';
-import { UserResolutions } from '@/components/stats/UserResolutions';
 export const MainPage = () => {
   return (
     <CommonLayout>
@@ -36,11 +35,6 @@ export const MainPage = () => {
               <UserLanguages />
             </WithBoundarySuspense>
           </div>
-        </div>
-        <div className="flex gap-8">
-          <WithBoundarySuspense>
-            <UserResolutions />
-          </WithBoundarySuspense>
         </div>
       </div>
     </CommonLayout>

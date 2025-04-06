@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
+import { SlCalender } from 'react-icons/sl';
 import { toast, ToastContainer } from 'react-toastify';
 import { SidebarNavItem } from './SidebarNavItem';
 
@@ -49,6 +50,11 @@ export const Sidebar = () => {
           icon={FaDiagramProject}
           label="서브 통계"
           linkUrl="/subStat"
+        />
+        <SidebarNavItem
+          icon={SlCalender}
+          label="날짜 통계"
+          linkUrl="/dateStat"
         />
         <SidebarNavItem icon={FaPerson} label="나의 정보" linkUrl="/myPage" />
       </nav>

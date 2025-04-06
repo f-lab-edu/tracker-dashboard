@@ -5,9 +5,7 @@ import { UserBounce } from '@/components/stats/UserBounce';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
 import { UserOses } from '@/components/stats/UserOses';
 import { UserReferrer } from '@/components/stats/UserReferrer';
-import { VisitorsPageByPeriodCount } from '@/components/stats/VisitorsPageByPeriodCount';
-import { VisitorsPeriodCount } from '@/components/stats/VisitorsPeriodCount';
-
+import { UserResolutions } from '@/components/stats/UserResolutions';
 export const SubStatPage = () => {
   return (
     <CommonLayout>
@@ -20,12 +18,6 @@ export const SubStatPage = () => {
         </WithBoundarySuspense>
       </div>
       <WithBoundarySuspense>
-        <VisitorsPageByPeriodCount />
-      </WithBoundarySuspense>
-      <WithBoundarySuspense>
-        <VisitorsPeriodCount />
-      </WithBoundarySuspense>
-      <WithBoundarySuspense>
         <UserReferrer />
       </WithBoundarySuspense>
       <WithBoundarySuspense>
@@ -33,6 +25,9 @@ export const SubStatPage = () => {
       </WithBoundarySuspense>
       <WithBoundarySuspense>
         <PerPageAverageScrollDepth />
+      </WithBoundarySuspense>
+      <WithBoundarySuspense>
+        <UserResolutions />
       </WithBoundarySuspense>
     </CommonLayout>
   );
