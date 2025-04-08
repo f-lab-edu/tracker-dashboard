@@ -22,7 +22,7 @@ export const DateRangePicker = ({ onRangeChange }: CustomDatePickerProps) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center m-2">
       <FaRegCalendarAlt className="mr-2 text-accent-100" />
       <DatePicker
         selectsRange={true}

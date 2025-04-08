@@ -27,6 +27,8 @@ export const VisitorsPageByPeriodCount = () => {
         data={visitorData.chartData}
         barKeys={visitorData.chartKeys}
         barColors={CHART_COLORS}
+        marginTop={10}
+        height={180}
       />
     </Card>
   );
