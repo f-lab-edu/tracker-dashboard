@@ -85,7 +85,7 @@ export const EnrollForm = () => {
 
   return (
     <FormTemplate<EnrollFormType>
-      title="LOGIN"
+      title="Enroll"
       inputs={enrollValidationInputs}
       onSubmit={handleEnrollSubmit}
       submitLabel="회원가입"

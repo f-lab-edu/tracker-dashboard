@@ -30,6 +30,7 @@ export const LoginForm = () => {
       label: 'Email',
       name: 'email',
       placeholder: '이메일을 입력해주세요',
+      autocomplete: 'email',
       validation: {
         required: { value: true, message: '이메일은 필수입니다' },
         pattern: {
@@ -42,6 +43,7 @@ export const LoginForm = () => {
     {
       label: 'Password',
       name: 'password',
+      autocomplete: 'current-password',
       placeholder: '비밀번호를 입력해주세요',
       inputType: 'password',
       validation: {
