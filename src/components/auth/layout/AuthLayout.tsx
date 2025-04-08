@@ -1,12 +1,6 @@
-import { useRouterState } from '@tanstack/react-router';
 import loginImg from '../../../assets/auth/loginImg.jpg';
-import { EnrollForm } from '../forms/EnrollForm';
-import { LoginForm } from '../forms/LoginForm';
 
-export const AuthLayout = () => {
-  const { location } = useRouterState();
-  const isLogin = location.pathname === '/login';
-
+export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <div className="flex w-[1000px] bg-white shadow-lg rounded-lg p-4 items-stretch min-h-[500px]">
@@ -15,7 +9,7 @@ export const AuthLayout = () => {
         </div>
         <div className="w-1/2 p-4 flex flex-col">
           <h1 className="text-3xl font-bold text-center">Tracker dashboard</h1>
-          {isLogin ? <LoginForm /> : <EnrollForm />}
+          {children}
         </div>
       </div>
     </div>

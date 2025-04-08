@@ -7,8 +7,9 @@ interface TotalVisitorsDataType {
 }
 
 export const useTotalVisitors = () => {
-  return useSuspenseQuery<TotalVisitorsDataType[]>({
+  return useSuspenseQuery({
     queryKey: ['totalVisitors'],
-    queryFn: () => fetchData('/dashboard/totalVisitorsCount'),
+    queryFn: () =>
+      fetchData<TotalVisitorsDataType[]>('/dashboard/totalVisitorsCount'),
   });
 };

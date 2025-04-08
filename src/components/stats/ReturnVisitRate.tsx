@@ -1,10 +1,10 @@
+import { useReturnVisitRate } from '@/hooks/useReturnVisitRate';
 import { FiActivity } from 'react-icons/fi';
 import { Card } from '../common/Card';
-import { useReturnVisitRate } from '../hook/useReturnVisitRate';
 
 export const ReturnVisitRate = () => {
   const { data } = useReturnVisitRate();
-  const roundedReturnRate = Math.round(data.visitedUsersRate);
+  const returnData = Math.round(data.visitedUsersRate);
 
   return (
     <Card borderRadius="xl" width="fit">
@@ -12,7 +12,7 @@ export const ReturnVisitRate = () => {
         <p className="text-lg font-bold">Return Visit Rate</p>
         <div className="flex gap-4 items-center justify-center mt-4">
           <FiActivity size={30} />
-          <p className="text-center text-3xl">{roundedReturnRate}%</p>
+          <p className="text-center text-3xl">{returnData}%</p>
         </div>
       </div>
     </Card>

@@ -1,5 +1,39 @@
+import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
+import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
+import { UserBrowsers } from '@/components/stats/UserBrowsers';
+import { UserCountries } from '@/components/stats/UserCountries';
+import { UserLanguages } from '@/components/stats/UserLanguages';
+import { UserOses } from '@/components/stats/UserOses';
+import { UserResolutions } from '@/components/stats/UserResolutions';
 
 export const SubStatPage = () => {
-  return <CommonLayout />;
+  return (
+    <CommonLayout>
+      <div className="flex flex-col gap-8">
+        <div className="flex gap-8">
+          <DashboardSlogan />
+        </div>
+        <div className="flex gap-8">
+          <WithBoundarySuspense>
+            <UserLanguages />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserCountries />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserOses />
+          </WithBoundarySuspense>
+        </div>
+        <div className="flex gap-8">
+          <WithBoundarySuspense>
+            <UserResolutions />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserBrowsers />
+          </WithBoundarySuspense>
+        </div>
+      </div>
+    </CommonLayout>
+  );
 };
