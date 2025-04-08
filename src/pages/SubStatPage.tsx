@@ -1,34 +1,39 @@
+import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
 import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
-import { PerPageAverageScrollDepth } from '@/components/stats/PerPageAverageScrollDepth';
-import { UserBounce } from '@/components/stats/UserBounce';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
+import { UserCountries } from '@/components/stats/UserCountries';
+import { UserLanguages } from '@/components/stats/UserLanguages';
 import { UserOses } from '@/components/stats/UserOses';
-import { UserReferrer } from '@/components/stats/UserReferrer';
 import { UserResolutions } from '@/components/stats/UserResolutions';
+
 export const SubStatPage = () => {
   return (
     <CommonLayout>
-      <div className="flex">
-        <WithBoundarySuspense>
-          <UserBrowsers />
-        </WithBoundarySuspense>
-        <WithBoundarySuspense>
-          <UserBounce />
-        </WithBoundarySuspense>
+      <div className="flex flex-col gap-8">
+        <div className="flex gap-8">
+          <DashboardSlogan />
+        </div>
+        <div className="flex gap-8">
+          <WithBoundarySuspense>
+            <UserLanguages />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserCountries />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserOses />
+          </WithBoundarySuspense>
+        </div>
+        <div className="flex gap-8">
+          <WithBoundarySuspense>
+            <UserResolutions />
+          </WithBoundarySuspense>
+          <WithBoundarySuspense>
+            <UserBrowsers />
+          </WithBoundarySuspense>
+        </div>
       </div>
-      <WithBoundarySuspense>
-        <UserReferrer />
-      </WithBoundarySuspense>
-      <WithBoundarySuspense>
-        <UserOses />
-      </WithBoundarySuspense>
-      <WithBoundarySuspense>
-        <PerPageAverageScrollDepth />
-      </WithBoundarySuspense>
-      <WithBoundarySuspense>
-        <UserResolutions />
-      </WithBoundarySuspense>
     </CommonLayout>
   );
 };

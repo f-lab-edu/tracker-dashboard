@@ -10,7 +10,7 @@ export const UserBrowsers = () => {
   const browserData = browserToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Browser Stats" />
       <BarChartTemplate
         data={browserData}

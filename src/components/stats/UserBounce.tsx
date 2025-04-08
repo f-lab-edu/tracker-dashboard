@@ -10,7 +10,7 @@ export const UserBounce = () => {
   const bounceData = bouncesToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Bounced Count Stats" />
       <BarChartTemplate
         data={bounceData}

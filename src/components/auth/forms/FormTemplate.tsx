@@ -42,25 +42,27 @@ export const FormTemplate = <T extends FieldValues>({
       <form onSubmit={handleSubmit(onSubmit)} className="h-full">
         <div className="flex flex-col justify-between h-full">
           <h2 className="text-2xl font-bold text-center"> {title}</h2>
-          {inputs.map(({ label, name, placeholder, validation, inputType }) => {
-            const finalValidation =
-              typeof validation === 'function'
-                ? validation(getValues)
-                : validation;
+          {inputs.map(
+            ({ label, name, placeholder, validation, inputType }, index) => {
+              const finalValidation =
+                typeof validation === 'function'
+                  ? validation(getValues)
+                  : validation;
 
-            return (
-              <AuthInputValid
-                key={name}
-                label={label}
-                name={name as Path<T>}
-                placeholder={placeholder}
-                validation={finalValidation}
-                register={register}
-                errors={errors}
-                inputType={inputType}
-              />
-            );
-          })}
+              return (
+                <AuthInputValid
+                  key={`${name}-${index}`}
+                  label={label}
+                  name={name as Path<T>}
+                  placeholder={placeholder}
+                  validation={finalValidation}
+                  register={register}
+                  errors={errors}
+                  inputType={inputType}
+                />
+              );
+            }
+          )}
           <AuthButton
             label={submitLabel}
             buttonType="submit"
