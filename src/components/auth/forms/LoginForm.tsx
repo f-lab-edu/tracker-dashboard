@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '@/config/api';
+import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
 import { SubmitHandler } from 'react-hook-form';
@@ -10,13 +11,16 @@ interface LoginFormType {
 }
 
 export const LoginForm = () => {
+  const queryClient = useQueryClient()
   const navigate = useNavigate();
   const handleLoginSubmit: SubmitHandler<LoginFormType> = async (data) => {
     try {
-      await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
+      const response = await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
         withCredentials: true,
       });
       navigate({ to: '/' });
+      const sessionData = response.data.sessionData
+      queryClient.setQueryData(['userSession'], sessionData)
     } catch (err) {
       console.error('요청 실패', err);
     }
