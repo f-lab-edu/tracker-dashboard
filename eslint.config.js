@@ -25,7 +25,7 @@ export default [
       ...eslintPluginReact.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
       ...eslintConfigPrettier.rules,
-      'prettier/prettier': ['error', { semi: true }],
+      'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
     },

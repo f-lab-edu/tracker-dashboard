@@ -9,7 +9,6 @@ import { Title } from '../common/Title';
 export const PerPageAverageScrollDepth = () => {
   const { data } = useScrollDepth();
   const scrollDepthData = scrollToChart(data);
-  console.log(scrollDepthData);
   return (
     <Card>
       <Title title="Average ScrollDepth" />

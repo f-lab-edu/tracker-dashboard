@@ -41,7 +41,10 @@ export const FormTemplate = <T extends FieldValues>({
     <div className="flex-1">
       <form onSubmit={handleSubmit(onSubmit)} className="h-full">
         <div className="flex flex-col justify-between h-full">
-          <h2 className="text-2xl font-bold text-center"> {title}</h2>
+          <h2 className="text-2xl font-bold text-center text-accent-100 mt-4">
+            {' '}
+            {title}
+          </h2>
           {inputs.map(
             ({ label, name, placeholder, validation, inputType }, index) => {
               const finalValidation =
@@ -63,19 +66,21 @@ export const FormTemplate = <T extends FieldValues>({
               );
             }
           )}
-          <AuthButton
-            label={submitLabel}
-            buttonType="submit"
-            buttonClassName="w-full bg-blue-500 "
-          />
-          {extraButton && (
+          <div className="flex flex-col gap-6">
             <AuthButton
-              label={extraButton.label}
-              buttonType="button"
-              onclick={extraButton.onClick}
-              buttonClassName="w-full"
+              label={submitLabel}
+              buttonType="submit"
+              buttonClassName="w-full bg-accent-200 "
             />
-          )}
+            {extraButton && (
+              <AuthButton
+                label={extraButton.label}
+                buttonType="button"
+                onclick={extraButton.onClick}
+                buttonClassName="w-full bg-accent-100"
+              />
+            )}
+          </div>
         </div>
       </form>
     </div>
