@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
 import { DateRangePicker } from '../common/DateRangePicker';
+import { EmptyState } from '../common/EmptyState';
 import { Title } from '../common/Title';
 
 export const VisitorsPeriodCount = () => {
@@ -23,13 +24,17 @@ export const VisitorsPeriodCount = () => {
     <Card>
       <Title title="VisitorsPeriodCount Stats" />
       <DateRangePicker onRangeChange={setSelectedRange} />
-      <BarChartTemplate
-        data={visitorsData.chartData}
-        barKeys={visitorsData.chartKeys}
-        barColors={CHART_COLORS}
-        marginTop={10}
-        height={180}
-      />
+      {visitorsData.chartData?.length ? (
+        <BarChartTemplate
+          data={visitorsData.chartData}
+          barKeys={visitorsData.chartKeys}
+          barColors={CHART_COLORS}
+          marginTop={10}
+          height={180}
+        />
+      ) : (
+        <EmptyState />
+      )}
     </Card>
   );
 };

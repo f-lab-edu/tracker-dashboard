@@ -3,6 +3,7 @@ import { useUserReferrer } from '@/hooks/useUserReferrer';
 import { referrersToChart } from '@/mappers/referrersToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
+import { EmptyState } from '../common/EmptyState';
 import { Title } from '../common/Title';
 
 export const UserReferrer = () => {
@@ -10,9 +11,13 @@ export const UserReferrer = () => {
   const referrersData = referrersToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Referrer Stats" />
-      <PieChartTemplate data={referrersData} colors={CHART_COLORS} />
+      {referrersData?.length ? (
+        <PieChartTemplate data={referrersData} colors={CHART_COLORS} />
+      ) : (
+        <EmptyState />
+      )}
     </Card>
   );
 };

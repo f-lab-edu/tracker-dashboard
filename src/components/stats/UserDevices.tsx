@@ -3,6 +3,7 @@ import { useUserDevices } from '@/hooks/useUserDevices';
 import { devicesToChart } from '@/mappers/devicesToChart';
 import { PieChartTemplate } from '../charts/PieChartTemplate';
 import { Card } from '../common/Card';
+import { EmptyState } from '../common/EmptyState';
 import { Title } from '../common/Title';
 
 export const UserDevices = () => {
@@ -10,9 +11,13 @@ export const UserDevices = () => {
   const devicesData = devicesToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Device Stats" />
-      <PieChartTemplate data={devicesData} colors={CHART_COLORS} />
+      {devicesData?.length ? (
+        <PieChartTemplate data={devicesData} colors={CHART_COLORS} />
+      ) : (
+        <EmptyState />
+      )}
     </Card>
   );
 };

@@ -3,6 +3,7 @@ import { useBounceCount } from '@/hooks/useBounceCount';
 import { bouncesToChart } from '@/mappers/bouncesToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
+import { EmptyState } from '../common/EmptyState';
 import { Title } from '../common/Title';
 
 export const UserBounce = () => {
@@ -12,12 +13,16 @@ export const UserBounce = () => {
   return (
     <Card width="full">
       <Title title="Bounced Count Stats" />
-      <BarChartTemplate
-        data={bounceData}
-        barColors={CHART_COLORS}
-        marginRight={50}
-        marginTop={20}
-      />
+      {bounceData?.length ? (
+        <BarChartTemplate
+          data={bounceData}
+          barColors={CHART_COLORS}
+          marginRight={50}
+          marginTop={20}
+        />
+      ) : (
+        <EmptyState />
+      )}
     </Card>
   );
 };

@@ -3,6 +3,7 @@ import { useScrollDepth } from '@/hooks/useScrollDepth';
 import { scrollToChart } from '@/mappers/scrollsToChart';
 import { BarChartTemplate } from '../charts/BarChartTemplate';
 import { Card } from '../common/Card';
+import { EmptyState } from '../common/EmptyState';
 import { Title } from '../common/Title';
 
 export const PerPageAverageScrollDepth = () => {
@@ -15,7 +16,7 @@ export const PerPageAverageScrollDepth = () => {
       {scrollDepthData?.length ? (
         <BarChartTemplate data={scrollDepthData} barColors={CHART_COLORS} />
       ) : (
-          <p className="mt-4 text-primary-100">스크롤이 없는 사이트입니다</p>
+          <EmptyState />
       )}
     </Card>
   );
