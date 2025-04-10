@@ -16,6 +16,11 @@ export default [
       '@typescript-eslint': tseslint,
       prettier: eslintPluginPrettier,
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       ...eslintPluginReact.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
@@ -24,5 +29,6 @@ export default [
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
     },
+    extends: ['plugin:prettier/recommended'],
   },
 ];
