@@ -27,11 +27,13 @@ export const AuthInputValid = <T extends FieldValues>({
   return (
     <>
       <div className="flex items-center gap-2 w-full ">
-        <label className="w-[80px] text-sm">{label}</label>
+        <label className="w-[80px] text-sm text-accent-200 font-bold">
+          {label}
+        </label>
         <input
           type={inputType}
           {...register(name, validation)}
-          className="w-full"
+          className="w-full text-accent-200"
           placeholder={placeholder}
         />
       </div>
