@@ -11,7 +11,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             alt="loginImg"
           />
         </div>
-        <div className="w-1/2 p-4 flex flex-col border-4 border-accent-200">
+        <div className="w-1/2 p-4 flex flex-col">
           <h1 className="text-3xl font-bold text-center text-accent-200">
             Tracker dashboard
           </h1>

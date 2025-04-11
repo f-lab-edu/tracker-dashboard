@@ -1,7 +1,5 @@
 import { useSession } from '@/hooks/useSession';
-
 import { useState } from 'react';
-
 import { Card } from '../common/Card';
 import { CopyBtn } from '../common/CopyBtn';
 
@@ -27,7 +25,7 @@ export const ClientInfo = () => {
           <dt className="w-32 text-primary-100">API Key</dt>
           <button
             onClick={onClick}
-            className="text-primary-100 bg-background-100 p-0 w-32"
+            className="text-primary-100 text-sm  bg-background-100 p-1 w-32"
           >
             API Key 보기
           </button>
