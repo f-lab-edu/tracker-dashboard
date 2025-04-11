@@ -6,7 +6,7 @@ import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
 import { SlCalender } from 'react-icons/sl';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { SidebarNavItem } from './SidebarNavItem';
 
 export const Sidebar = () => {
@@ -23,8 +23,8 @@ export const Sidebar = () => {
       );
       navigate({ to: '/login' });
     } catch (err) {
+      toast.error('로그아웃 오류')
       console.error('로그아웃 오류', err);
-      toast.error('로그아웃 오류입니다');
     }
   };
   const moveToHome = () => {
@@ -69,7 +69,6 @@ export const Sidebar = () => {
           <p>Logout</p>
         </button>
       </div>
-      <ToastContainer />
     </aside>
   );
 };
