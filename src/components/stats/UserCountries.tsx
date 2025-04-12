@@ -11,7 +11,7 @@ export const UserCountries = () => {
   const countriesData = countriesToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Country Stats" />
       {countriesData?.length ? (
         <PieChartTemplate data={countriesData} colors={CHART_COLORS} />

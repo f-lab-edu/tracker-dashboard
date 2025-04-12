@@ -11,7 +11,7 @@ export const UserResolutions = () => {
   const resolutionData = resolutionToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Resolution Stats" />
       {resolutionData?.length ? (
         <BarChartTemplate

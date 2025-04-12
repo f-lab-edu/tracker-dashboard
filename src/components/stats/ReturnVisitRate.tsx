@@ -7,7 +7,7 @@ export const ReturnVisitRate = () => {
   const returnData = Math.round(data.visitedUsersRate);
 
   return (
-    <Card borderRadius="xl" width="fit">
+    <Card borderRadius="xl" width="full">
       <div>
         <p className="text-lg font-bold">Return Visit Rate</p>
         <div className="flex gap-4 items-center justify-center mt-4">

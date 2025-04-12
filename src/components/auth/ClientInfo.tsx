@@ -14,18 +14,18 @@ export const ClientInfo = () => {
     <Card>
       <dl className="flex flex-col gap-8">
         <div className="flex">
-          <dt className="w-32 text-primary-100">Domain</dt>
-          <dd className="w-32">{data?.user.domain}</dd>
+          <dt className="w-40 text-primary-100">Domain</dt>
+          <dd className="w-40">{data?.user.domain}</dd>
         </div>
         <div className="flex">
-          <dt className="w-32 text-primary-100">Email</dt>
+          <dt className="w-40 text-primary-100">Email</dt>
           <dd>{data?.user.email}</dd>
         </div>
         <div className="flex">
-          <dt className="w-32 text-primary-100">API Key</dt>
+          <dt className="w-40 text-primary-100">API Key</dt>
           <button
             onClick={onClick}
-            className="text-primary-100 text-sm  bg-background-100 p-1 w-32"
+            className="text-primary-100 text-sm  bg-background-100 p-1 w-40"
           >
             API Key 보기
           </button>

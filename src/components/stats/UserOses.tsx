@@ -11,7 +11,7 @@ export const UserOses = () => {
   const osData = osesToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Os Stats" />
       {osData?.length ? (
         <PieChartTemplate data={osData} colors={CHART_COLORS} />

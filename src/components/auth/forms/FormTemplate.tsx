@@ -40,9 +40,8 @@ export const FormTemplate = <T extends FieldValues>({
   return (
     <div className="flex-1">
       <form onSubmit={handleSubmit(onSubmit)} className="h-full">
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex gap-4 lg:flex flex-col justify-between h-full">
           <h2 className="text-2xl font-bold text-center text-accent-100 mt-4">
-            {' '}
             {title}
           </h2>
           {inputs.map(

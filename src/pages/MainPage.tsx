@@ -12,11 +12,11 @@ import { UserReferrer } from '@/components/stats/UserReferrer';
 export const MainPage = () => {
   return (
     <CommonLayout>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 mx-8 lg:mx-0">
         <div className="flex gap-8 ">
           <DashboardSlogan />
         </div>
-        <div className="flex gap-8 ">
+        <div className="flex gap-8 flex-col lg:flex-row">
           <WithBoundarySuspense>
             <TotalVisitors />
           </WithBoundarySuspense>
@@ -27,7 +27,7 @@ export const MainPage = () => {
             <OnlineUsers />
           </WithBoundarySuspense>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 flex-col lg:flex-row">
           <WithBoundarySuspense>
             <UserDevices />
           </WithBoundarySuspense>

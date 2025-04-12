@@ -6,7 +6,7 @@ export const OnlineUsers = () => {
   const { data } = useOnlineUser();
 
   return (
-    <Card borderRadius="xl" width="fit">
+    <Card borderRadius="xl" width="full">
       <div>
         <p className="text-lg font-bold">Online User Count</p>
         <div className="flex gap-4 items-center justify-center mt-4">
