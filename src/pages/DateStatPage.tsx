@@ -7,7 +7,7 @@ import { VisitorsPeriodCount } from '@/components/stats/VisitorsPeriodCount';
 export const DateStatPage = () => {
   return (
     <CommonLayout>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 mx-8 lg:mx-0">
         <DashboardSlogan />
         <WithBoundarySuspense>
           <VisitorsPageByPeriodCount />

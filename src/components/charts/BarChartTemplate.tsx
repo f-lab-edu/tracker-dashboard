@@ -4,6 +4,7 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -15,8 +16,6 @@ interface BarChartTemplateProps {
   barColors: string[];
   marginRight?: number;
   marginTop?: number;
-  width?: number;
-  height?: number;
 }
 
 export const BarChartTemplate = ({
@@ -25,13 +24,10 @@ export const BarChartTemplate = ({
   barKeys,
   marginRight = 0,
   marginTop = 0,
-  width = 450,
-  height = 200,
 }: BarChartTemplateProps) => {
   return (
-    <BarChart
-      width={width}
-      height={height}
+    <ResponsiveContainer width="100%" height={150}>
+      <BarChart
       data={data}
       margin={{ right: marginRight, top: marginTop }}
     >
@@ -52,5 +48,6 @@ export const BarChartTemplate = ({
       )}
       <Legend verticalAlign="bottom" />
     </BarChart>
+    </ResponsiveContainer>
   );
 };

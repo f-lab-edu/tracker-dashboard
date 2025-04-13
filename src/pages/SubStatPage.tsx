@@ -1,4 +1,3 @@
-import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
 import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
 import { UserBrowsers } from '@/components/stats/UserBrowsers';
@@ -10,11 +9,8 @@ import { UserResolutions } from '@/components/stats/UserResolutions';
 export const SubStatPage = () => {
   return (
     <CommonLayout>
-      <div className="flex flex-col gap-8">
-        <div className="flex gap-8">
-          <DashboardSlogan />
-        </div>
-        <div className="flex gap-8">
+      <div className="flex flex-col gap-8 mx-8 lg:mx-0">
+        <div className="flex gap-8 flex-col lg:flex-row">
           <WithBoundarySuspense>
             <UserLanguages />
           </WithBoundarySuspense>
@@ -25,10 +21,12 @@ export const SubStatPage = () => {
             <UserOses />
           </WithBoundarySuspense>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 flex-col lg:flex-row">
           <WithBoundarySuspense>
             <UserResolutions />
           </WithBoundarySuspense>
+        </div>
+        <div className="flex gap-8 flex-col lg:flex-row">
           <WithBoundarySuspense>
             <UserBrowsers />
           </WithBoundarySuspense>

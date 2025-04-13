@@ -17,8 +17,8 @@ export const UserBounce = () => {
         <BarChartTemplate
           data={bounceData}
           barColors={CHART_COLORS}
-          marginRight={50}
-          marginTop={20}
+          marginRight={30}
+          marginTop={10}
         />
       ) : (
         <EmptyState />

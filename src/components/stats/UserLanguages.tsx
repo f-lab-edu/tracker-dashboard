@@ -11,7 +11,7 @@ export const UserLanguages = () => {
   const languagesData = languagesToChart(data);
 
   return (
-    <Card width="fit">
+    <Card width="full">
       <Title title="Language Stats" />
       {languagesData?.length ? (
         <PieChartTemplate data={languagesData} colors={CHART_COLORS} />

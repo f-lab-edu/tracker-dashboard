@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { IoMdCopy } from 'react-icons/io';
 import { toast } from 'react-toastify';
 
+
 interface CopyBtnProps {
   apiKey: string;
 }
@@ -13,10 +14,10 @@ export const CopyBtn = ({ apiKey }: CopyBtnProps) => {
     try {
       await navigator.clipboard.writeText(text);
       setIsCopied(true);
-      toast('복사 성공');
+      toast.success('복사성공');
     } catch (err) {
       console.error(err);
-      toast('복사 실패');
+      toast.error("복사실패");
     }
   };
   return (
