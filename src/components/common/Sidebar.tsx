@@ -32,10 +32,10 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside className=" text-text-200 min-w-48 flex flex-col justify-between lg:pr-16 lg:border-r lg:border-text-200">
+    <aside className=" text-text-200 min-w-48 flex flex-col justify-between  lg:h-screen lg:p-8">
       <div className=" flex flex-row gap-8 items-center justify-between h-20 bg-background-200 lg:flex-col lg:items-start lg:bg-transparent">
         <h1>
-          <button onClick={moveToHome} className="text-2xl text-primary-100">
+          <button onClick={moveToHome} className="lg:text-2xl text-primary-100">
             Tracker Dashboard
           </button>
         </h1>
