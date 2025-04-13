@@ -2,7 +2,6 @@ import { DashboardSlogan } from '@/components/common/DashboardSlogan';
 import { CommonLayout } from '@/components/common/layout/CommonLayout';
 import { WithBoundarySuspense } from '@/components/common/WithBoundarySuspense';
 import { OnlineUsers } from '@/components/stats/OnlineUsers';
-import { PerPageAverageScrollDepth } from '@/components/stats/PerPageAverageScrollDepth';
 import { ReturnVisitRate } from '@/components/stats/ReturnVisitRate';
 import { TotalVisitors } from '@/components/stats/TotalVisitors';
 import { UserBounce } from '@/components/stats/UserBounce';
@@ -34,13 +33,10 @@ export const MainPage = () => {
           <WithBoundarySuspense>
             <UserReferrer />
           </WithBoundarySuspense>
-          <WithBoundarySuspense>
-            <UserBounce />
-          </WithBoundarySuspense>
         </div>
         <div>
           <WithBoundarySuspense>
-            <PerPageAverageScrollDepth />
+            <UserBounce />
           </WithBoundarySuspense>
         </div>
       </div>

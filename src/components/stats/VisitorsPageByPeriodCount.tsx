@@ -21,7 +21,7 @@ export const VisitorsPageByPeriodCount = () => {
   const visitorsData = visitorPageByPeriodToChart(data);
 
   return (
-    <Card>
+    <Card width='full'>
       <Title title="VisitorsPageByPeriodCount Stats" />
       <DateRangePicker onRangeChange={setSelectedRange} />
       {visitorsData.chartData?.length ? (
@@ -30,7 +30,6 @@ export const VisitorsPageByPeriodCount = () => {
           barKeys={visitorsData.chartKeys}
           barColors={CHART_COLORS}
           marginTop={10}
-          height={180}
         />
       ) : (
         <EmptyState />
