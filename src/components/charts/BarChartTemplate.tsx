@@ -16,6 +16,7 @@ interface BarChartTemplateProps {
   barColors: string[];
   marginRight?: number;
   marginTop?: number;
+  height?: number
 }
 
 export const BarChartTemplate = ({
@@ -24,9 +25,10 @@ export const BarChartTemplate = ({
   barKeys,
   marginRight = 0,
   marginTop = 0,
+  height = 150
 }: BarChartTemplateProps) => {
   return (
-    <ResponsiveContainer width="100%" height={150}>
+    <ResponsiveContainer width="100%" height={height}>
       <BarChart
       data={data}
       margin={{ right: marginRight, top: marginTop }}
