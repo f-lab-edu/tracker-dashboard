@@ -1,6 +1,5 @@
 import { PieChartDataType } from '@/types/chart';
-import { Cell, Legend, Pie, PieChart } from 'recharts';
-
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
 interface PieChartTemplateProps {
   colors: string[];
   data: PieChartDataType[];
@@ -8,7 +7,8 @@ interface PieChartTemplateProps {
 
 export const PieChartTemplate = ({ data, colors }: PieChartTemplateProps) => {
   return (
-    <PieChart width={200} height={200}>
+    <ResponsiveContainer width="100%" height={150}>
+      <PieChart width={200} height={200}>
       <Pie
         data={data}
         dataKey="value"
@@ -27,5 +27,6 @@ export const PieChartTemplate = ({ data, colors }: PieChartTemplateProps) => {
       </Pie>
       <Legend verticalAlign="bottom" />
     </PieChart>
+    </ResponsiveContainer>
   );
 };
