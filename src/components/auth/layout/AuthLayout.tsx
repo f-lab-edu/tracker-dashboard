@@ -7,7 +7,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full p-4 lg:w-1/2">
           <img
             src={login}
-            className="rounded-lg object-cover lg:h-full"
+            className="rounded-lg object-cover h-full"
             alt="loginImg"
           />
         </div>
