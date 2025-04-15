@@ -1,11 +1,11 @@
-import { useSession } from '@/hooks/useSession';
+import { useToken } from '@/hooks/useToken';
 import { useState } from 'react';
 import { Card } from '../common/Card';
 import { CopyBtn } from '../common/CopyBtn';
 
 export const ClientInfo = () => {
   const [isClicked, setClicked] = useState(false);
-  const { data } = useSession();
+  const { clientInfo } = useToken();
   const onClick = () => {
     setClicked(() => !isClicked);
   };
@@ -15,11 +15,11 @@ export const ClientInfo = () => {
       <dl className="flex flex-col gap-8">
         <div className="flex">
           <dt className="w-20 text-primary-100 lg:w-40">Domain</dt>
-          <dd className='ml-4'>{data?.user.domain}</dd>
+          <dd className='ml-4'>{clientInfo?.user.domain}</dd>
         </div>
         <div className="flex">
           <dt className="w-20 text-primary-100 lg:w-40">Email</dt>
-          <dd className='ml-4'>{data?.user.email}</dd>
+          <dd className='ml-4'>{clientInfo?.user.email}</dd>
         </div>
 
         <div className="flex">
@@ -29,8 +29,8 @@ export const ClientInfo = () => {
           >
             API Key
           </button>
-          {isClicked && <dd className="ml-4 truncate">{data?.user.apiKey}</dd>}
-          {isClicked && <CopyBtn apiKey={data?.user.apiKey || ''} />}
+          {isClicked && <dd className="ml-4 truncate">{clientInfo?.user.apiKey}</dd>}
+          {isClicked && <CopyBtn apiKey={clientInfo?.user.apiKey || ''} />}
         </div>
       </dl>
     </Card>
