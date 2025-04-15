@@ -4,10 +4,10 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen w-full flex justify-center items-center">
       <div className=" bg-white shadow-lg rounded-lg p-4 items-stretch md:flex min-h-[500px] w-[1000px]">
-        <div className="w-1/2 p-4 lg:w-full">
+        <div className="w-full p-4 lg:w-1/2">
           <img
             src={login}
-            className="rounded-lg object-cover h-full"
+            className="rounded-lg object-cover lg:h-full"
             alt="loginImg"
           />
         </div>

@@ -17,7 +17,7 @@ export const LoginForm = () => {
       const response = await axios.post(`${API_BASE_URL}/dashboard/loginClient`, data, {
       });
       localStorage.setItem('accessToken', response.data.token)
-      localStorage.setItem('ClientInfo', JSON.stringify(response.data.client))
+      localStorage.setItem('clientInfo', JSON.stringify(response.data.client))
       navigate({ to: '/' });
     } catch (err) {
       console.error('요청 실패', err);

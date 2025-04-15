@@ -15,11 +15,11 @@ export const ClientInfo = () => {
       <dl className="flex flex-col gap-8">
         <div className="flex">
           <dt className="w-20 text-primary-100 lg:w-40">Domain</dt>
-          <dd className='ml-4'>{clientInfo?.user.domain}</dd>
+          <dd className='ml-4'>{clientInfo.domain}</dd>
         </div>
         <div className="flex">
           <dt className="w-20 text-primary-100 lg:w-40">Email</dt>
-          <dd className='ml-4'>{clientInfo?.user.email}</dd>
+          <dd className='ml-4'>{clientInfo.email}</dd>
         </div>
 
         <div className="flex">
@@ -29,8 +29,8 @@ export const ClientInfo = () => {
           >
             API Key
           </button>
-          {isClicked && <dd className="ml-4 truncate">{clientInfo?.user.apiKey}</dd>}
-          {isClicked && <CopyBtn apiKey={clientInfo?.user.apiKey || ''} />}
+          {isClicked && <dd className="ml-4 truncate">{clientInfo.apiKey}</dd>}
+          {isClicked && <CopyBtn apiKey={clientInfo.apiKey || ''} />}
         </div>
       </dl>
     </Card>
