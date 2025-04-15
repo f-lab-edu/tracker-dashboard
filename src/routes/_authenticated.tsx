@@ -1,10 +1,10 @@
-import { useSession } from '@/hooks/useSession';
+import { useToken } from '@/hooks/useToken';
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
 
 const Authenticated = () => {
-  const { data } = useSession();
+  const { isAuthenticated } = useToken();
 
-  if (!data) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
   return <Outlet />;

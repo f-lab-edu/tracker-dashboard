@@ -1,7 +1,5 @@
-import { API_BASE_URL } from '@/config/api';
-import { useSession } from '@/hooks/useSession';
+import { useToken } from '@/hooks/useToken';
 import { useNavigate } from '@tanstack/react-router';
-import axios from 'axios';
 import { FaDiagramProject, FaPerson } from 'react-icons/fa6';
 import { ImStatsDots } from 'react-icons/im';
 import { MdLogout } from 'react-icons/md';
@@ -11,16 +9,12 @@ import { SidebarNavItem } from './SidebarNavItem';
 
 export const Sidebar = () => {
   const navigate = useNavigate();
-  const { data: { user } = {} } = useSession();
+  const { clientInfo } = useToken()
   const handleLogout = () => {
     try {
-      axios.post(
-        `${API_BASE_URL}/dashboard/logoutClient`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('clientInfo')
+      toast.success('로그아웃 되었습니다.')
       navigate({ to: '/login' });
     } catch (err) {
       toast.error('로그아웃 오류')
@@ -40,8 +34,8 @@ export const Sidebar = () => {
           </button>
         </h1>
         <div className='flex flex-row lg:flex-col'>
-          <p>{user?.domain}님</p>
-          <p className='hidden lg:block'>{user?.email}</p>
+          <p>{clientInfo?.domain}님</p>
+          <p className='hidden lg:block'>{clientInfo?.email}</p>
         </div>
         <div className='lg:hidden'>
           <button
