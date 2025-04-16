@@ -5,7 +5,7 @@ export const fetchData = async <T>(
   url: string,
   params?: Record<string, string>
 ): Promise<T> => {
-  const token = localStorage.getItem('accessToken');
+  const token = sessionStorage.getItem('accessToken');
   const res = await axios.get(`${API_BASE_URL}${url}`, {
     headers: {
       Authorization: `Bearer ${token}`,

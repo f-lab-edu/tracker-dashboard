@@ -12,8 +12,8 @@ export const Sidebar = () => {
   const { clientInfo } = useToken()
   const handleLogout = () => {
     try {
-      localStorage.removeItem('accessToken')
-      localStorage.removeItem('clientInfo')
+      sessionStorage.removeItem('accessToken')
+      sessionStorage.removeItem('clientInfo')
       toast.success('로그아웃 되었습니다.')
       navigate({ to: '/login' });
     } catch (err) {
