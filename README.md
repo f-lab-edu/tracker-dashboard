@@ -7,7 +7,7 @@
 ## 📺 기능 시연
 
 ### PC 화면
-<p align="center">
+<p>
 <img src="https://github.com/user-attachments/assets/40407000-c101-49b0-9a94-87f034d03cca" width="70%" alt="pc"/>
 </p>
 
