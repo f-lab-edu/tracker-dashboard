@@ -3,6 +3,10 @@
 > Tracker SDK 를 통해 수집한 방문자 데이터를 시각적으로 분석하고, 실시간 트래픽 및 사용자 행동 통계를 한눈에 확인할 수 있는 Dashboard 입니다.
 
 ---
+## 📺 기능 시연
+![PC](https://github.com/user-attachments/assets/40407000-c101-49b0-9a94-87f034d03cca)
+![Mobile](https://github.com/user-attachments/assets/db4376df-b7fe-41bb-b0b7-717d01b89d08)
+
 
 ## 🍀 배포링크 
 - [SDK](https://www.npmjs.com/package/tracker-sdk-nemo?activeTab=readme)
