@@ -24,7 +24,7 @@
 
 ## 🍀 배포링크 
 - [SDK](https://www.npmjs.com/package/tracker-sdk-nemo?activeTab=readme)
-- [Dashboard](https://tracker-dashboard.site)
+- [Dashboard](https://tracker-dashboard.site/login)
 - [Server](https://tracker-server.site) _(서버 상태에 따라 접근이 제한될 수 있습니다.)_
 
 ---
@@ -67,29 +67,25 @@
 ---
 
  ## ⚙️ 설치 및 실행 방법
- https://tracker-dashboard.site
-
- ### Tracker Dashboard 실행
- 1. npm install tracker-sdk-nemo@latest 설치
- 2. TrackerWrapper 컴포넌트 생성 
- 3. useEffect내부에 tracker.init('apiKey 생성')
-
+ https://tracker-dashboard.site/login
 
  ### Tracker SDK 실행
- 4. 상위 컴포넌트 trackerWrapper로 감싸기  
- 1. 회원가입
- 2. 나의정보 이동 
- 3. APIKey 복사
+  1. npm install tracker-sdk-nemo@latest 설치
+  2. TrackerWrapper 컴포넌트 생성 
+  3. useEffect내부에 tracker.init('apiKey 작성')
+  4. 상위 컴포넌트 trackerWrapper로 감싸기 
+
+  ```ts
+  import Tracker from 'tracker-sdk-nemo'
+
+  useEffect(() => {
+    Tracker.init('복사한 API Key')
+  }, [])
+
+ ### Tracker Dashboard 실행
+  1. 회원가입
+  2. 나의정보 이동 
+  3. APIKey 복사
  
- ### Tracker-Dashboard 로컬 실행
- ```bash
-# 1. 레포지토리 클론
-git clone https://github.com/your-repo/tracker-dashboard.git
 
-# 2. 패키지 설치
-npm install
 
-# 3. 개발 서버 실행
-npm run dev
-
----
